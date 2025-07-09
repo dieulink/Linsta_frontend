@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linsta_app/screens/login_screens/login_page.dart';
 import 'package:linsta_app/screens/login_screens/on_boarding_page.dart';
 
 void main() {
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-      routes: {"/": (context) => OnBoardingPage()},
+      routes: {
+        "/": (context) => OnBoardingPage(),
+        "loginPage": (context) => LoginPage(),
+      },
     );
   }
 }
