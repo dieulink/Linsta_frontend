@@ -3,8 +3,8 @@ import 'package:linsta_app/screens/login_screens/widgets/button_input.dart';
 import 'package:linsta_app/screens/login_screens/widgets/text_input.dart';
 import 'package:linsta_app/ui_values.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              "Đăng nhập để tiếp tục",
+              "Tạo tài khoản mới",
               style: TextStyle(
                 fontFamily: "LD",
                 fontSize: 15,
@@ -35,6 +35,12 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
+            text_input(
+              isObscureText: false,
+              hintText: "Họ và tên",
+              iconPath: 'assets/icons/system_icon/24px/User.png',
+            ),
+            SizedBox(height: 20),
             text_input(
               isObscureText: false,
               hintText: "Địa chỉ Email",
@@ -47,25 +53,18 @@ class LoginPage extends StatelessWidget {
               iconPath: 'assets/icons/system_icon/24px/Password.png',
             ),
             SizedBox(height: 20),
-            button_input(text: "Đăng nhập"),
-            SizedBox(height: 20),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "Quên mật khẩu ?",
-                style: TextStyle(
-                  color: mainColor,
-                  fontFamily: "LD",
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            text_input(
+              isObscureText: false,
+              hintText: "Địa chỉ",
+              iconPath: 'assets/icons/system_icon/24px/Location.png',
             ),
+            SizedBox(height: 20),
+            button_input(text: "Đăng nhập"),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Bạn chưa có tài khoản ?",
+                  "Bạn đã có tài khoản ?",
                   style: TextStyle(
                     color: textColor2,
                     fontFamily: "LD",
@@ -73,10 +72,11 @@ class LoginPage extends StatelessWidget {
                     //fontWeight: FontWeight.bold,
                   ),
                 ),
+                SizedBox(height: 20),
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                    "Đăng kí",
+                    "Đăng nhập",
                     style: TextStyle(
                       color: mainColor,
                       fontFamily: "LD",
