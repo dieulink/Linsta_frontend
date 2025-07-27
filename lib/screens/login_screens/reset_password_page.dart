@@ -25,7 +25,7 @@ class ResetPasswordPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
-            text_input(
+            TextInput(
               isObscureText: false,
               hintText: "Mã OTP",
               iconPath: 'assets/icons/system_icon/24px/Password.png',
@@ -42,19 +42,19 @@ class ResetPasswordPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            text_input(
+            TextInput(
               isObscureText: true,
               hintText: "Mật khẩu",
               iconPath: 'assets/icons/system_icon/24px/Password.png',
             ),
             SizedBox(height: 20),
-            text_input(
+            TextInput(
               isObscureText: false,
               hintText: "Xác nhận mật khẩu",
               iconPath: 'assets/icons/system_icon/24px/Password.png',
             ),
             SizedBox(height: 30),
-            button_input(text: "Đổi mật khẩu"),
+            ButtonInput(text: "Đổi mật khẩu"),
           ],
         ),
       ),

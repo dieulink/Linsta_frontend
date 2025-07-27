@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/ui_values.dart';
 
-class text_input extends StatelessWidget {
+class TextInput extends StatelessWidget {
   final bool isObscureText;
   final String hintText;
   final String iconPath;
 
-  const text_input({
+  const TextInput({
     super.key,
     required this.isObscureText,
     required this.hintText,

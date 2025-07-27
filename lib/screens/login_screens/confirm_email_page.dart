@@ -28,13 +28,13 @@ class ConfirmEmailPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 50),
-              text_input(
+              TextInput(
                 isObscureText: false,
                 hintText: "Địa chỉ Email",
                 iconPath: 'assets/icons/system_icon/24px/Message.png',
               ),
               SizedBox(height: 20),
-              button_input(text: "Xác nhận"),
+              ButtonInput(text: "Xác nhận"),
             ],
           ),
         ),

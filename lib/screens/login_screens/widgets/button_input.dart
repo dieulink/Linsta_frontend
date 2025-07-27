@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/ui_values.dart';
 
-class button_input extends StatelessWidget {
+class ButtonInput extends StatelessWidget {
   final String text;
-  const button_input({super.key, required this.text});
+  const ButtonInput({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

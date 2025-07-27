@@ -35,19 +35,19 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
-            text_input(
+            TextInput(
               isObscureText: false,
               hintText: "Địa chỉ Email",
               iconPath: 'assets/icons/system_icon/24px/Message.png',
             ),
             SizedBox(height: 20),
-            text_input(
+            TextInput(
               isObscureText: true,
               hintText: "Mật khẩu",
               iconPath: 'assets/icons/system_icon/24px/Password.png',
             ),
             SizedBox(height: 20),
-            button_input(text: "Đăng nhập"),
+            ButtonInput(text: "Đăng nhập"),
             SizedBox(height: 20),
             TextButton(
               onPressed: () {},
