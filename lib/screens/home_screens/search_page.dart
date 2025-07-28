@@ -56,9 +56,15 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Image.asset(
-                      "assets/icons/system_icon/24px/Notification.png",
-                      height: 30,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, "cartPage");
+                      },
+                      child: Image.asset(
+                        "assets/icons/system_icon/24px/Cart.png",
+                        height: 40,
+                        color: mainColor,
+                      ),
                     ),
                   ],
                 ),

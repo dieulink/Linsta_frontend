@@ -13,28 +13,31 @@ class SearchInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7),
-        color: white,
-      ),
-      child: TextField(
-        style: TextStyle(color: textColor2, fontFamily: "LD", fontSize: 15),
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(7),
-            borderSide: BorderSide(color: textColor2, width: 1),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: mainColor, width: 1.5),
-            borderRadius: BorderRadius.circular(7),
-          ),
-          hintText: hintText,
-          hintStyle: TextStyle(color: textColor2, fontFamily: "LD"),
-          prefixIcon: Padding(
-            padding: EdgeInsets.all(1),
-            child: Image.asset(iconPath, color: mainColor),
-          ),
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, "searchItem");
+      },
+      borderRadius: BorderRadius.circular(7),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(7),
+          color: white,
+          border: Border.all(color: mainColor, width: 1),
+        ),
+        child: Row(
+          children: [
+            Image.asset(iconPath, color: mainColor, width: 24, height: 24),
+            SizedBox(width: 10),
+            Text(
+              hintText,
+              style: TextStyle(
+                color: textColor2,
+                fontFamily: "LD",
+                fontSize: 15,
+              ),
+            ),
+          ],
         ),
       ),
     );

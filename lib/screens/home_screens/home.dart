@@ -21,7 +21,7 @@ class _HomePageState extends State<Home> {
   final List<Widget> pages = [
     HomePage(),
     SearchPage(),
-    CartPage(),
+    // CartPage(),
     VoucherPage(),
     AccountPage(),
   ];
@@ -39,25 +39,25 @@ class _HomePageState extends State<Home> {
       body: IndexedStack(index: selectedIndex, children: pages),
       bottomNavigationBar: Container(
         color: Colors.white,
-        padding: EdgeInsets.only(bottom: 10, top: 10),
+        padding: EdgeInsets.only(bottom: 10, top: 0),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
           child: GNav(
             tabBorderRadius: 15,
             backgroundColor: Colors.white,
-            color: mainColor,
-            activeColor: Colors.white,
+            color: textColor2,
+            activeColor: mainColor,
             textStyle: TextStyle(
               fontFamily: "LD",
-              color: white,
+              color: mainColor,
               fontWeight: FontWeight.bold,
             ),
-            tabBackgroundColor: mainColor,
+            //tabBackgroundColor: mainColor,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
             tabs: [
               GButton(icon: Icons.home_sharp, text: ' Trang chủ'),
               GButton(icon: Icons.search_rounded, text: ' Tìm kiếm'),
-              GButton(icon: Icons.shopping_bag_outlined, text: ' Giỏ hàng'),
+              // GButton(icon: Icons.shopping_cart_outlined, text: ' Giỏ hàng'),
               GButton(icon: Icons.local_offer_outlined, text: ' Ưu đãi'),
               GButton(icon: Icons.account_circle_outlined, text: ' Tài khoản'),
             ],

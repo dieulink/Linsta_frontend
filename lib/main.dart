@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:linsta_app/screens/home_screens/cart_page.dart';
 import 'package:linsta_app/screens/home_screens/home.dart';
 import 'package:linsta_app/screens/home_screens/home_page.dart';
 import 'package:linsta_app/screens/home_screens/product_detail.dart';
+import 'package:linsta_app/screens/home_screens/search_item_page.dart';
 import 'package:linsta_app/screens/login_screens/confirm_email_page.dart';
 import 'package:linsta_app/screens/login_screens/login_page.dart';
 import 'package:linsta_app/screens/login_screens/on_boarding_page.dart';
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
         "resetPasswordPage": (context) => ResetPasswordPage(),
         "home": (context) => Home(),
         // "item": (context) => ProductDetail(),
+        "cartPage": (context) => CartPage(),
+        "searchItem": (context) => SearchItemPage(),
       },
     );
   }
