@@ -35,7 +35,7 @@ class _HomePageState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: backgroudColor,
       body: IndexedStack(index: selectedIndex, children: pages),
       bottomNavigationBar: Container(
         color: Colors.white,

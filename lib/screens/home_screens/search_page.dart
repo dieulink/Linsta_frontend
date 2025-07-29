@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/models/response/brand.dart';
 import 'package:linsta_app/models/response/product_category.dart';
+import 'package:linsta_app/screens/home_screens/brand_item_page.dart';
+import 'package:linsta_app/screens/home_screens/category_item_page.dart';
 import 'package:linsta_app/screens/home_screens/widgets/search_input.dart';
 import 'package:linsta_app/services/category_service.dart';
 import 'package:linsta_app/ui_values.dart';
@@ -42,7 +44,8 @@ class _SearchPageState extends State<SearchPage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: SafeArea(
-          child: Padding(
+          child: Container(
+            color: mainColor,
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,8 +65,8 @@ class _SearchPageState extends State<SearchPage> {
                       },
                       child: Image.asset(
                         "assets/icons/system_icon/24px/Cart.png",
-                        height: 40,
-                        color: mainColor,
+                        height: 50,
+                        color: white,
                       ),
                     ),
                   ],
@@ -103,17 +106,46 @@ class _SearchPageState extends State<SearchPage> {
                   children: _categories.map((Category) {
                     return Column(
                       children: [
-                        Container(
-                          height: 50,
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: borderColor),
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: ClipRRect(
-                            child: Image.asset(
-                              "assets/icons/cate_icon/${Category.id}.png",
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        CategoryItemPage(
+                                          id: Category.id,
+                                          name: Category.name,
+                                        ),
+                                // transitionsBuilder:
+                                //     (
+                                //       context,
+                                //       animation,
+                                //       secondaryAnimation,
+                                //       child,
+                                //     ) {
+                                //       return FadeTransition(
+                                //         opacity: animation,
+                                //         child: child,
+                                //       );
+                                //     },
+                              ),
+                            );
+                          },
+
+                          child: Container(
+                            height: 50,
+                            padding: EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: borderColor),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadiusGeometry.circular(7),
+                              child: Image.asset(
+                                "assets/icons/cate_icon/${Category.id}.png",
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
                         ),
@@ -132,6 +164,8 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
               SizedBox(height: 30),
+              Container(height: 1, color: borderColor),
+              SizedBox(height: 10),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -156,20 +190,34 @@ class _SearchPageState extends State<SearchPage> {
                   children: _brand.map((brand) {
                     return Column(
                       children: [
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: borderColor),
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.white,
-                          ),
-                          child: ClipRRect(
-                            child: Image.asset(
-                              brand.image,
-                              width: 50,
-                              fit: BoxFit.fill,
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        BrandItemPage(
+                                          image: brand.image,
+                                          name: brand.name,
+                                        ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: borderColor),
+                              borderRadius: BorderRadius.circular(100),
+                              color: Colors.white,
                             ),
-                            borderRadius: BorderRadiusGeometry.circular(100),
+                            child: ClipRRect(
+                              child: Image.asset(
+                                brand.image,
+                                width: 50,
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius: BorderRadiusGeometry.circular(100),
+                            ),
                           ),
                         ),
                         SizedBox(height: 5),

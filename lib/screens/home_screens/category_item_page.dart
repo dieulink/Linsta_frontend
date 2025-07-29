@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:linsta_app/models/response/product.dart';
 import 'package:linsta_app/screens/home_screens/widgets/app_bar_search.dart';
+import 'package:linsta_app/screens/home_screens/widgets/app_bar_search_cate.dart';
 import 'package:linsta_app/screens/home_screens/widgets/item_product.dart';
+import 'package:linsta_app/services/category_service.dart';
 import 'package:linsta_app/services/product_service.dart';
 
-class SearchItemPage extends StatefulWidget {
-  const SearchItemPage({super.key});
+class CategoryItemPage extends StatefulWidget {
+  final int id;
+  final String name;
+  const CategoryItemPage({super.key, required this.id, required this.name});
 
   @override
-  State<SearchItemPage> createState() => _SearchItemPageState();
+  State<CategoryItemPage> createState() => _SearchItemPageState();
 }
 
-class _SearchItemPageState extends State<SearchItemPage> {
+class _SearchItemPageState extends State<CategoryItemPage> {
   List<Product> products = [];
   Timer? _debounce;
   int currentPage = 0;
@@ -37,10 +41,10 @@ class _SearchItemPageState extends State<SearchItemPage> {
     if (isLoading || !hasMore || currentKeyword.isEmpty) return;
     setState(() => isLoading = true);
 
-    final results = await ProductService.search(
+    final results = await CategoryService.searchInCate(
       keyword: currentKeyword,
       page: currentPage,
-      size: 10,
+      id: widget.id,
     );
 
     setState(() {
@@ -76,7 +80,10 @@ class _SearchItemPageState extends State<SearchItemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarSearch(onChanged: _onSearchChanged),
+      appBar: AppBarSearchCate(
+        onChanged: _onSearchChanged,
+        text: "Bạn muốn tìm gì trong ''${widget.name}'' ? ",
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: products.isEmpty

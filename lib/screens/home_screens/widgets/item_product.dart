@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:linsta_app/models/response/product.dart';
 import 'package:linsta_app/screens/home_screens/product_detail.dart';
 import 'package:linsta_app/ui_values.dart';
+import 'package:linsta_app/screens/home_screens/widgets/item_product.dart';
 
 class ItemProduct extends StatelessWidget {
   final Product product;

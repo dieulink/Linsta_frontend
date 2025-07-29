@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linsta_app/screens/login_screens/widgets/app_bar_login.dart';
 import 'package:linsta_app/screens/login_screens/widgets/button_input.dart';
 import 'package:linsta_app/screens/login_screens/widgets/text_input.dart';
 import 'package:linsta_app/ui_values.dart';
@@ -9,7 +10,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+      body: Container(
+        color: white,
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
@@ -50,7 +52,9 @@ class LoginPage extends StatelessWidget {
             ButtonInput(text: "Đăng nhập"),
             SizedBox(height: 20),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "confirmEmailPage");
+              },
               child: Text(
                 "Quên mật khẩu ?",
                 style: TextStyle(

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/ui_values.dart';
 
-class AppBarSearch extends StatelessWidget implements PreferredSizeWidget {
+class AppBarSearchCate extends StatelessWidget implements PreferredSizeWidget {
   final ValueChanged<String> onChanged;
+  final String text;
 
-  const AppBarSearch({super.key, required this.onChanged});
+  const AppBarSearchCate({
+    super.key,
+    required this.onChanged,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +51,7 @@ class AppBarSearch extends StatelessWidget implements PreferredSizeWidget {
                     borderSide: BorderSide(color: mainColor, width: 1.5),
                     borderRadius: BorderRadius.circular(7),
                   ),
-                  hintText: "Bạn muốn tìm gì ?",
+                  hintText: text,
                   hintStyle: TextStyle(color: textColor2, fontFamily: "LD"),
                   suffixIcon: InkWell(
                     child: Icon(Icons.search, color: mainColor),

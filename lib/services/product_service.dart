@@ -51,4 +51,31 @@ class ProductService {
       throw Exception('Failed to load product');
     }
   }
+
+  static Future<List<Product>> search({
+    required String keyword,
+    required page,
+    required int size,
+  }) async {
+    try {
+      final url = Uri.parse(
+        'http://192.168.5.136:8080/api/home/products/search?keyword=$keyword&page=$page&size=$size',
+      );
+
+      final response = await http.get(url);
+      print("Status: ${response.statusCode}");
+
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
+        final data = jsonData['products'] as List;
+
+        return data.map((item) => Product.fromJson(item)).toList();
+      } else {
+        throw Exception('Failed to load products');
+      }
+    } catch (e) {
+      print("Lỗi fetchProducts: $e");
+      return [];
+    }
+  }
 }

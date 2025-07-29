@@ -4,6 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:linsta_app/models/response/product.dart';
 import 'package:linsta_app/models/response/product_category.dart';
+import 'package:linsta_app/screens/home_screens/category_item_page.dart';
 import 'package:linsta_app/screens/home_screens/widgets/item_product.dart';
 import 'package:linsta_app/screens/home_screens/widgets/search_input.dart';
 import 'package:linsta_app/services/category_service.dart';
@@ -92,8 +93,9 @@ class _HomePageState extends State<HomePage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Container(
+            color: mainColor,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -112,8 +114,8 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Image.asset(
                         "assets/icons/system_icon/24px/Cart.png",
-                        height: 40,
-                        color: mainColor,
+                        height: 50,
+                        color: white,
                       ),
                     ),
                   ],
@@ -124,66 +126,102 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+        decoration: BoxDecoration(
+          gradient: RadialGradient(
+            colors: [mainColor, backgroudColor],
+            stops: [0.8, 0.9],
+            center: Alignment.topCenter,
+            radius: 1,
+          ),
+        ),
         child: SingleChildScrollView(
           controller: _scrollController,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Image.asset("assets/imgs/logo_blue.png", height: 200),
+              // Container(
+              //   alignment: Alignment.centerLeft,
+              //   child:
+              // //   Text(
+              // //     "Danh mục sản phẩm",
+              // //     overflow: TextOverflow.ellipsis,
+              // //     style: TextStyle(
+              // //       fontFamily: "LD",
+              // //       fontWeight: FontWeight.bold,
+              // //       color: textColor1,
+              // //       fontSize: 16,
+              // //     ),
+              // //   ),
+              // // ),
               Container(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Danh mục sản phẩm",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontFamily: "LD",
-                    fontWeight: FontWeight.bold,
-                    color: textColor1,
-                    fontSize: 16,
-                  ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7),
+                  color: white,
                 ),
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: _categories.map((Category) {
-                    return Container(
-                      padding: const EdgeInsets.all(8.0),
-                      height: 120,
-                      width: 85,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 65,
-                            padding: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              color: white,
-                              border: Border.all(color: borderColor),
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: ClipRRect(
-                              child: Image.asset(
-                                "assets/icons/cate_icon/${Category.id}.png",
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _categories.map((Category) {
+                      return Container(
+                        padding: const EdgeInsets.all(8.0),
+                        height: 115,
+                        width: 85,
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  PageRouteBuilder(
+                                    pageBuilder:
+                                        (
+                                          context,
+                                          animation,
+                                          secondaryAnimation,
+                                        ) => CategoryItemPage(
+                                          id: Category.id,
+                                          name: Category.name,
+                                        ),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: 60,
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: white,
+                                  border: Border.all(color: borderColor),
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadiusGeometry.circular(
+                                    100,
+                                  ),
+                                  child: Image.asset(
+                                    "assets/icons/cate_icon/${Category.id}.png",
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            Category.name,
-                            style: TextStyle(
-                              color: textColor1,
-                              fontFamily: "LD",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 11,
+                            SizedBox(height: 5),
+                            Text(
+                              Category.name,
+                              style: TextStyle(
+                                color: textColor1,
+                                fontFamily: "LD",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    );
-                  }).toList(),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
 

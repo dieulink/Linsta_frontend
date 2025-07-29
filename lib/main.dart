@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: backgroudColor),
       routes: {
-        "/": (context) => Home(),
+        "/": (context) => OnBoardingPage(),
         "loginPage": (context) => LoginPage(),
         "registerPage": (context) => RegisterPage(),
         "confirmEmailPage": (context) => ConfirmEmailPage(),
