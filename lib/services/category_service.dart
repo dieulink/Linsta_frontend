@@ -25,7 +25,7 @@ class CategoryService {
   }
 
   static Future<List<Product>> categoryItem({
-    required String id,
+    required int id,
     required page,
     required int size,
   }) async {

@@ -10,6 +10,7 @@ import 'package:linsta_app/screens/home_screens/widgets/search_input.dart';
 import 'package:linsta_app/services/category_service.dart';
 import 'package:linsta_app/services/product_service.dart';
 import 'package:linsta_app/ui_values.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,11 +28,13 @@ class _HomePageState extends State<HomePage> {
   bool _hasMore = true;
   int _page = 0;
   final int _size = 20;
+  String _address = '';
   @override
   void initState() {
     super.initState();
     _loadProducts();
     _loadCategories();
+    _loadAddress();
     _scrollController.addListener(_onScroll);
   }
 
@@ -53,6 +56,13 @@ class _HomePageState extends State<HomePage> {
         _hasMore) {
       _loadProducts();
     }
+  }
+
+  Future<void> _loadAddress() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _address = prefs.getString('address') ?? 'Không có địa chỉ';
+    });
   }
 
   Future<void> _loadProducts() async {
@@ -224,7 +234,30 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-
+              Container(
+                margin: EdgeInsets.only(top: 10),
+                padding: EdgeInsets.all(5),
+                // decoration: BoxDecoration(
+                //   color: mainColor,
+                //   border: Border.all(color: white),
+                //   borderRadius: BorderRadius.circular(5),
+                // ),
+                width: getWidth(context),
+                child: Row(
+                  children: [
+                    Icon(Icons.location_on, color: white),
+                    Text(
+                      "Nhận hàng tại: ${_address}",
+                      style: TextStyle(
+                        color: white,
+                        fontFamily: "LD",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(height: 10),
               MasonryGridView.count(
                 crossAxisCount: 2,

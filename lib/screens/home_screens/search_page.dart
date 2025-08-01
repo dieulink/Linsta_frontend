@@ -3,6 +3,7 @@ import 'package:linsta_app/models/response/brand.dart';
 import 'package:linsta_app/models/response/product_category.dart';
 import 'package:linsta_app/screens/home_screens/brand_item_page.dart';
 import 'package:linsta_app/screens/home_screens/category_item_page.dart';
+import 'package:linsta_app/screens/home_screens/category_page.dart';
 import 'package:linsta_app/screens/home_screens/widgets/search_input.dart';
 import 'package:linsta_app/services/category_service.dart';
 import 'package:linsta_app/ui_values.dart';
@@ -112,7 +113,7 @@ class _SearchPageState extends State<SearchPage> {
                               PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
-                                        CategoryItemPage(
+                                        CategoryPage(
                                           id: Category.id,
                                           name: Category.name,
                                         ),

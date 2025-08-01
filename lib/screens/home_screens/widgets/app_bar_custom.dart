@@ -7,6 +7,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // margin: EdgeInsets.only(top: 20),
       color: Colors.white,
       padding: EdgeInsets.all(25),
       child: Row(

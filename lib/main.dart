@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:linsta_app/screens/account_screens/address/address_page.dart';
+import 'package:linsta_app/screens/account_screens/order/order_page.dart';
+import 'package:linsta_app/screens/account_screens/profile/profile_page.dart';
 import 'package:linsta_app/screens/home_screens/cart_page.dart';
+import 'package:linsta_app/screens/home_screens/category_item_page.dart';
 import 'package:linsta_app/screens/home_screens/home.dart';
 import 'package:linsta_app/screens/home_screens/home_page.dart';
 import 'package:linsta_app/screens/home_screens/product_detail.dart';
@@ -12,6 +16,7 @@ import 'package:linsta_app/screens/login_screens/reset_password_page.dart';
 import 'package:linsta_app/ui_values.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -33,6 +38,9 @@ class MyApp extends StatelessWidget {
         // "item": (context) => ProductDetail(),
         "cartPage": (context) => CartPage(),
         "searchItem": (context) => SearchItemPage(),
+        "profilePage": (context) => ProfilePage(),
+        "orderPage": (context) => OrderPage(),
+        "addressPage": (context) => AddressPage(),
       },
     );
   }

@@ -5,17 +5,21 @@ class TextInput extends StatelessWidget {
   final bool isObscureText;
   final String hintText;
   final String iconPath;
+  final TextEditingController controller;
 
   const TextInput({
     super.key,
     required this.isObscureText,
     required this.hintText,
     required this.iconPath,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
+
       style: TextStyle(
         color: textColor2,
         fontFamily: "LD",
