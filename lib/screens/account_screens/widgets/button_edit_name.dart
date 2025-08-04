@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:linsta_app/models/request/user_login_request.dart';
-import 'package:linsta_app/models/response/login_response.dart';
-import 'package:linsta_app/services/login_service.dart';
+import 'package:linsta_app/models/request/edit_name_request.dart';
+import 'package:linsta_app/services/user_service.dart';
+
 import 'package:linsta_app/ui_values.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ButtonInputConfirmPassword extends StatelessWidget {
+class ButtonEditName extends StatelessWidget {
   final String text;
-  final TextEditingController emailController;
-  const ButtonInputConfirmPassword({
+  final TextEditingController nameController;
+  const ButtonEditName({
     super.key,
     required this.text,
-    required this.emailController,
+    required this.nameController,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        final email = emailController.text.trim();
+        final prefs = await SharedPreferences.getInstance();
+        String? token = prefs.getString('token');
+        String? userId = prefs.getString('userId');
 
-        if (email.isEmpty) {
+        if (token == null || userId == null) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Row(
@@ -30,7 +31,7 @@ class ButtonInputConfirmPassword extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      "Vui lòng nhập đầy đủ thông tin",
+                      "Không lấy được dữ liệu id = ${userId} token = ${token}",
                       style: TextStyle(fontFamily: "LD"),
                     ),
                   ),
@@ -48,11 +49,15 @@ class ButtonInputConfirmPassword extends StatelessWidget {
           );
           return;
         }
+        int id = int.parse(userId);
+        final request = EditNameRequest(
+          id: id,
+          newName: nameController.text.trim(),
+        );
 
-        final loginService = LoginService();
-        final response = await loginService.confirmEmail(email);
+        final response = await UserService.editName(request);
 
-        if (response != null && response.isNotEmpty) {
+        if (response != null) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Row(
@@ -60,7 +65,10 @@ class ButtonInputConfirmPassword extends StatelessWidget {
                   Icon(Icons.download_done_rounded, color: white),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Text(response!, style: TextStyle(fontFamily: "LD")),
+                    child: Text(
+                      response.message,
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
                   ),
                 ],
               ),
@@ -74,7 +82,8 @@ class ButtonInputConfirmPassword extends StatelessWidget {
               elevation: 8,
             ),
           );
-          Navigator.pushNamed(context, "resetPasswordPage", arguments: email);
+          await prefs.setString('name', nameController.text.trim());
+          Navigator.pushNamed(context, "home");
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -84,7 +93,7 @@ class ButtonInputConfirmPassword extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      "Email chưa đăng kí",
+                      "Đổi tên thất bại",
                       style: TextStyle(fontFamily: "LD"),
                     ),
                   ),

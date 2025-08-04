@@ -56,6 +56,11 @@ class AccountPage extends StatelessWidget {
                   name: "Đơn hàng",
                   ontap: "orderPage",
                 ),
+                TagAccount(
+                  imgPath: "assets/icons/system_icon/24px/Right.png",
+                  name: "Đăng xuất",
+                  ontap: "",
+                ),
               ],
             ),
           ),

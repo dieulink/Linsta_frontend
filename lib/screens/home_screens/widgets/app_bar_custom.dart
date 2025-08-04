@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:linsta_app/screens/home_screens/cart_page.dart';
+import 'package:linsta_app/screens/home_screens/home.dart';
 import 'package:linsta_app/ui_values.dart';
 
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
@@ -23,9 +25,41 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Spacer(),
-          Icon(Icons.shopping_bag_outlined, color: mainColor, size: 30),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      CartPage(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
+                ),
+              );
+            },
+            child: Image.asset(
+              "assets/icons/system_icon/24px/Cart.png",
+              height: 50,
+              color: mainColor,
+            ),
+          ),
           SizedBox(width: 20),
-          Icon(Icons.home, color: mainColor, size: 30),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      Home(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
+                ),
+              );
+            },
+            child: Icon(Icons.home, color: mainColor, size: 25),
+          ),
         ],
       ),
     );

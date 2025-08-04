@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/screens/account_screens/profile/profile_page.dart';
 import 'package:linsta_app/screens/account_screens/widgets/app_bar_profile.dart';
-import 'package:linsta_app/screens/account_screens/widgets/button_edit_email.dart';
 import 'package:linsta_app/screens/account_screens/widgets/button_edit_name.dart';
 import 'package:linsta_app/screens/account_screens/widgets/text_edit.dart';
 import 'package:linsta_app/ui_values.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AddressPage extends StatefulWidget {
-  const AddressPage({super.key});
+class EditNamePage extends StatefulWidget {
+  const EditNamePage({super.key});
 
   @override
-  State<AddressPage> createState() => _AddressPageState();
+  State<EditNamePage> createState() => _EditNamePageState();
 }
 
-class _AddressPageState extends State<AddressPage> {
-  String address = "";
+class _EditNamePageState extends State<EditNamePage> {
+  String name = "";
   String id = "";
 
   @override
   Future<void> _loadUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      address = prefs.getString('address') ?? 'Không có';
-      id = prefs.getString('id') ?? 'Không có';
+      name = prefs.getString('name') ?? 'Không có';
+      id = prefs.getString('userId') ?? 'Không có';
     });
   }
 
@@ -34,10 +33,10 @@ class _AddressPageState extends State<AddressPage> {
 
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
+    final nameController = TextEditingController();
     return Scaffold(
       backgroundColor: white,
-      //appBar: AppBarProfile(name: "Địa chỉ Email"),
+      appBar: AppBarProfile(name: "Tên người dùng"),
       body: Container(
         padding: EdgeInsets.all(15),
         child: SingleChildScrollView(
@@ -52,7 +51,7 @@ class _AddressPageState extends State<AddressPage> {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "* Chỉnh sửa địa chỉ",
+                  "* Chỉnh sửa tên",
                   style: TextStyle(
                     color: textColor2,
                     fontFamily: "LD",
@@ -62,10 +61,10 @@ class _AddressPageState extends State<AddressPage> {
                 ),
               ),
               Container(
-                child: TextEdit(hintText: address, controller: emailController),
+                child: TextEdit(hintText: name, controller: nameController),
               ),
               SizedBox(height: 20),
-              ButtonEditEmail(text: "Chỉnh sửa"),
+              ButtonEditName(text: "Chỉnh sửa", nameController: nameController),
             ],
           ),
         ),

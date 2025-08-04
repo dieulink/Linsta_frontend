@@ -54,7 +54,7 @@ class _ProfilePageState extends State<ProfilePage> {
             TagProfile(
               name: "Tên người dùng",
               value: name,
-              nextPage: "",
+              nextPage: "editNamePage",
               iconPath: "assets/icons/system_icon/24px/Username.png",
             ),
             TagProfile(
@@ -63,11 +63,39 @@ class _ProfilePageState extends State<ProfilePage> {
               nextPage: "",
               iconPath: "assets/icons/system_icon/24px/Message.png",
             ),
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(top: 5, left: 5),
+              child: Text(
+                textAlign: TextAlign.left,
+                "*Không thể chỉnh sửa Email",
+                style: TextStyle(
+                  color: const Color.fromARGB(150, 104, 112, 136),
+                  fontFamily: "LD",
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             TagProfile(
               name: "Số điện thoại",
               value: phone,
               nextPage: "",
               iconPath: "assets/icons/system_icon/24px/Phone.png",
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(top: 5, left: 5),
+              child: Text(
+                textAlign: TextAlign.left,
+                "*Không thể chỉnh sửa Số điện thoại",
+                style: TextStyle(
+                  color: const Color.fromARGB(150, 104, 112, 136),
+                  fontFamily: "LD",
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),

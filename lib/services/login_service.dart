@@ -39,6 +39,8 @@ class LoginService {
             await prefs.setString('email', email);
             await prefs.setString('role', role);
             await prefs.setString('address', address);
+            String phone = decodedToken['phone'];
+            await prefs.setString('phone', phone);
 
             print("SharedPreferences");
             print("ID: ${prefs.getString('userId')}");
@@ -93,6 +95,8 @@ class LoginService {
             await prefs.setString('email', email);
             await prefs.setString('role', role);
             await prefs.setString('address', address);
+            String phone = decodedToken['phone'];
+            await prefs.setString('phone', phone);
 
             print("SharedPreferences");
             print("ID: ${prefs.getString('userId')}");
@@ -169,6 +173,8 @@ class LoginService {
             await prefs.setString('email', email);
             await prefs.setString('role', role);
             await prefs.setString('address', address);
+            String phone = decodedToken['phone'];
+            await prefs.setString('phone', phone);
 
             print("SharedPreferences");
             print("ID: ${prefs.getString('userId')}");
@@ -176,6 +182,7 @@ class LoginService {
             print("Email: ${prefs.getString('email')}");
             print("Vai trò: ${prefs.getString('role')}");
             print("địa chỉ: ${prefs.getString('address')}");
+            print("sđt: ${prefs.getString('phone')}");
           }
           return LoginResponse.fromJson(json);
         }

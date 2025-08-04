@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:linsta_app/models/request/add_cart_request.dart';
 import 'package:linsta_app/models/response/product.dart';
 import 'package:linsta_app/screens/home_screens/product_detail.dart';
+import 'package:linsta_app/services/cart_service.dart';
 import 'package:linsta_app/ui_values.dart';
 import 'package:linsta_app/screens/home_screens/widgets/item_product.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ItemProduct extends StatelessWidget {
   final Product product;
@@ -109,10 +112,73 @@ class ItemProduct extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(right: 10),
-                  child: Icon(
-                    Icons.shopping_cart_checkout_outlined,
-                    color: mainColor,
-                    size: 25,
+                  child: InkWell(
+                    onTap: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      final userId = prefs.getString('userId');
+                      int id = int.parse(userId!);
+                      final request = AddCartRequest(
+                        userId: id,
+                        id: product.id,
+                      );
+                      final response = await CartService.addToCart(request);
+                      if (response != null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Row(
+                              children: [
+                                Icon(Icons.download_done_rounded, color: white),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    "Đã thêm vào giỏ hàng",
+                                    style: TextStyle(fontFamily: "LD"),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            backgroundColor: textColor1,
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            margin: const EdgeInsets.all(20),
+                            duration: const Duration(seconds: 2),
+                            elevation: 8,
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Row(
+                              children: [
+                                Icon(Icons.error_outline, color: white),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    "Thêm vào giỏ hàng thất bại",
+                                    style: TextStyle(fontFamily: "LD"),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            backgroundColor: textColor1,
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            margin: const EdgeInsets.all(20),
+                            duration: const Duration(seconds: 2),
+                            elevation: 8,
+                          ),
+                        );
+                      }
+                    },
+                    child: Icon(
+                      Icons.shopping_cart_checkout_outlined,
+                      color: mainColor,
+                      size: 25,
+                    ),
                   ),
                 ),
               ],

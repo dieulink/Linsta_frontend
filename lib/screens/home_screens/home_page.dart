@@ -4,6 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:linsta_app/models/response/product.dart';
 import 'package:linsta_app/models/response/product_category.dart';
+import 'package:linsta_app/screens/home_screens/cart_page.dart';
 import 'package:linsta_app/screens/home_screens/category_item_page.dart';
 import 'package:linsta_app/screens/home_screens/widgets/item_product.dart';
 import 'package:linsta_app/screens/home_screens/widgets/search_input.dart';
@@ -120,7 +121,25 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(width: 10),
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, "cartPage");
+                        Navigator.of(context).push(
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    CartPage(),
+                            transitionsBuilder:
+                                (
+                                  context,
+                                  animation,
+                                  secondaryAnimation,
+                                  child,
+                                ) {
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  );
+                                },
+                          ),
+                        );
                       },
                       child: Image.asset(
                         "assets/icons/system_icon/24px/Cart.png",

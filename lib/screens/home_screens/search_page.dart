@@ -42,6 +42,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: SafeArea(
