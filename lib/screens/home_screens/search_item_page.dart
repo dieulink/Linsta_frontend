@@ -5,6 +5,7 @@ import 'package:linsta_app/models/response/product.dart';
 import 'package:linsta_app/screens/home_screens/widgets/app_bar_search.dart';
 import 'package:linsta_app/screens/home_screens/widgets/item_product.dart';
 import 'package:linsta_app/services/product_service.dart';
+import 'package:linsta_app/ui_values.dart';
 
 class SearchItemPage extends StatefulWidget {
   const SearchItemPage({super.key});
@@ -80,7 +81,16 @@ class _SearchItemPageState extends State<SearchItemPage> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: products.isEmpty
-            ? const Center(child: Text("Không tìm thấy sản phẩm"))
+            ? const Center(
+                child: Text(
+                  "Không có sản phẩm",
+                  style: TextStyle(
+                    color: textColor1,
+                    fontFamily: "LD",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )
             : MasonryGridView.count(
                 controller: _scrollController,
                 crossAxisCount: 2,

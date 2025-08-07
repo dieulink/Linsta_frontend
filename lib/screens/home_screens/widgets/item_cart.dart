@@ -4,7 +4,7 @@ import 'package:linsta_app/services/cart_service.dart';
 import 'package:linsta_app/ui_values.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ItemCart extends StatelessWidget {
+class ItemCart extends StatefulWidget {
   final String imgPath;
   final String name;
   final int price;
@@ -12,6 +12,7 @@ class ItemCart extends StatelessWidget {
   final int productId;
   final VoidCallback onDeleteSuccess;
   final VoidCallback onIncreaseSuccess;
+  final VoidCallback onDecreaseSuccess;
 
   const ItemCart({
     super.key,
@@ -22,8 +23,14 @@ class ItemCart extends StatelessWidget {
     required this.productId,
     required this.onDeleteSuccess,
     required this.onIncreaseSuccess,
+    required this.onDecreaseSuccess,
   });
 
+  @override
+  State<ItemCart> createState() => _ItemCartState();
+}
+
+class _ItemCartState extends State<ItemCart> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +46,7 @@ class ItemCart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.network(
-            imgPath,
+            widget.imgPath,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               return Image.asset("assets/imgs/default.jpg");
@@ -55,13 +62,13 @@ class ItemCart extends StatelessWidget {
                     Container(
                       width: getWidth(context) * 0.4,
                       child: Text(
-                        name,
+                        widget.name,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontFamily: "LD",
                           fontWeight: FontWeight.bold,
-                          color: textColor2,
+                          color: textColor3,
                           fontSize: 13,
                         ),
                       ),
@@ -73,11 +80,11 @@ class ItemCart extends StatelessWidget {
                         final userId = prefs.getString('userId');
                         int id = int.parse(userId!);
                         final response = await CartService.deleteFromCart(
-                          productId,
+                          widget.productId,
                           id,
                         );
                         if (response != null) {
-                          onDeleteSuccess();
+                          widget.onDeleteSuccess();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Row(
@@ -101,7 +108,7 @@ class ItemCart extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               margin: const EdgeInsets.all(20),
-                              duration: const Duration(seconds: 2),
+                              duration: const Duration(seconds: 1),
                               elevation: 8,
                             ),
                           );
@@ -126,7 +133,7 @@ class ItemCart extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               margin: const EdgeInsets.all(20),
-                              duration: const Duration(seconds: 2),
+                              duration: const Duration(seconds: 1),
                               elevation: 8,
                             ),
                           );
@@ -148,7 +155,7 @@ class ItemCart extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        "${NumberFormat("#,###", "vi_VN").format(price)}",
+                        "${NumberFormat("#,###", "vi_VN").format(widget.price)}",
                         style: TextStyle(
                           fontFamily: "LD",
                           fontWeight: FontWeight.bold,
@@ -167,7 +174,47 @@ class ItemCart extends StatelessWidget {
                       child: Row(
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              final prefs =
+                                  await SharedPreferences.getInstance();
+                              final userId = prefs.getString('userId');
+                              int id = int.parse(userId!);
+                              final response = await CartService.decrease(
+                                widget.productId,
+                                id,
+                              );
+                              //print("đây là responsee $response");
+                              if (response != null) {
+                                widget.onDecreaseSuccess();
+                                print("okeee");
+                              } else {
+                                print(response);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Row(
+                                      children: [
+                                        Icon(Icons.error_outline, color: white),
+                                        const SizedBox(width: 12),
+                                        Expanded(
+                                          child: Text(
+                                            "Giảm số lượng sản phẩm thất bại",
+                                            style: TextStyle(fontFamily: "LD"),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    backgroundColor: textColor1,
+                                    behavior: SnackBarBehavior.floating,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    margin: const EdgeInsets.all(20),
+                                    duration: const Duration(seconds: 2),
+                                    elevation: 8,
+                                  ),
+                                );
+                              }
+                            },
                             icon: const Icon(Icons.remove, size: 15),
                             color: textColor2,
                           ),
@@ -175,7 +222,7 @@ class ItemCart extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 5),
                             child: Text(
-                              "${quantity}",
+                              "${widget.quantity}",
                               style: const TextStyle(
                                 fontSize: 13,
                                 color: textColor2,
@@ -189,11 +236,12 @@ class ItemCart extends StatelessWidget {
                               final userId = prefs.getString('userId');
                               int id = int.parse(userId!);
                               final response = await CartService.increase(
-                                productId,
+                                widget.productId,
                                 id,
                               );
+                              //print("đây là responsee $response");
                               if (response != null) {
-                                onIncreaseSuccess();
+                                widget.onIncreaseSuccess();
                                 print("okeee");
                               } else {
                                 print(response);

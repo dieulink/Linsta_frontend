@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:linsta_app/screens/home_screens/home.dart';
 import 'package:linsta_app/ui_values.dart';
 
-class AppBarCartCustom extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarCartCustom({super.key});
+class AppBarOrder extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarOrder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class AppBarCartCustom extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  "Giỏ hàng",
+                  "Đơn hàng",
                   style: TextStyle(
                     color: mainColor,
                     fontFamily: "LD",
@@ -41,24 +41,24 @@ class AppBarCartCustom extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      Home(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                        return FadeTransition(opacity: animation, child: child);
-                      },
-                ),
-              );
-            },
-            child: Container(
-              margin: EdgeInsets.only(right: 10),
-              child: Icon(Icons.home, color: mainColor, size: 25),
-            ),
-          ),
+          // InkWell(
+          //   onTap: () {
+          //     Navigator.of(context).push(
+          //       PageRouteBuilder(
+          //         pageBuilder: (context, animation, secondaryAnimation) =>
+          //             Home(),
+          //         transitionsBuilder:
+          //             (context, animation, secondaryAnimation, child) {
+          //               return FadeTransition(opacity: animation, child: child);
+          //             },
+          //       ),
+          //     );
+          //   },
+          //   child: Container(
+          //     margin: EdgeInsets.only(right: 10),
+          //     child: Icon(Icons.home, color: mainColor, size: 25),
+          //   ),
+          // ),
         ],
       ),
     );

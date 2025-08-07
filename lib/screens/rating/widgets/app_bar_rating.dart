@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:linsta_app/screens/home_screens/home.dart';
 import 'package:linsta_app/ui_values.dart';
 
-class AppBarCartCustom extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarCartCustom({super.key});
+class AppBarRating extends StatelessWidget implements PreferredSizeWidget {
+  final String name;
+  const AppBarRating({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +11,12 @@ class AppBarCartCustom extends StatelessWidget implements PreferredSizeWidget {
       color: Colors.white,
       padding: EdgeInsets.only(top: 30, left: 10, right: 25, bottom: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          SizedBox(width: 10),
           Container(
             margin: EdgeInsets.only(top: 15),
             child: Row(
               children: [
-                SizedBox(width: 10),
                 InkWell(
                   onTap: () {
                     Navigator.pop(context);
@@ -30,33 +29,15 @@ class AppBarCartCustom extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  "Giỏ hàng",
+                  name,
                   style: TextStyle(
                     color: mainColor,
                     fontFamily: "LD",
-                    fontSize: 18,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) =>
-                      Home(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                        return FadeTransition(opacity: animation, child: child);
-                      },
-                ),
-              );
-            },
-            child: Container(
-              margin: EdgeInsets.only(right: 10),
-              child: Icon(Icons.home, color: mainColor, size: 25),
             ),
           ),
         ],

@@ -33,7 +33,7 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
                   style: TextStyle(
                     color: textColor1,
                     fontFamily: "LD",
-                    fontSize: 18,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

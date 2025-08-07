@@ -21,8 +21,7 @@ class _HomePageState extends State<Home> {
   final List<Widget> pages = [
     HomePage(),
     SearchPage(),
-    // CartPage(),
-    VoucherPage(),
+    // VoucherPage(),
     AccountPage(),
   ];
 
@@ -57,8 +56,7 @@ class _HomePageState extends State<Home> {
             tabs: [
               GButton(icon: Icons.home_sharp, text: ' Trang chủ'),
               GButton(icon: Icons.search_rounded, text: ' Tìm kiếm'),
-              // GButton(icon: Icons.shopping_cart_outlined, text: ' Giỏ hàng'),
-              GButton(icon: Icons.local_offer_outlined, text: ' Ưu đãi'),
+              //GButton(icon: Icons.local_offer_outlined, text: ' Ưu đãi'),
               GButton(icon: Icons.account_circle_outlined, text: ' Tài khoản'),
             ],
             selectedIndex: selectedIndex,

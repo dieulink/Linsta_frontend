@@ -24,19 +24,19 @@ class TagAccount extends StatelessWidget {
         padding: EdgeInsets.only(left: 15),
         margin: EdgeInsets.symmetric(vertical: 10),
         width: getWidth(context),
-        height: 70,
+        height: 50,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
               children: [
                 Image.asset(imgPath, color: mainColor, width: 30),
-                SizedBox(width: 20),
+                SizedBox(width: 15),
                 Text(
                   name,
                   style: TextStyle(
                     color: textColor1,
-                    fontSize: 18,
+                    fontSize: 15,
                     fontFamily: "LD",
                     fontWeight: FontWeight.bold,
                   ),

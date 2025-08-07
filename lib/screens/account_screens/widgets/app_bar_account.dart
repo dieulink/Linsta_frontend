@@ -22,7 +22,7 @@ class AppBarAccount extends StatelessWidget implements PreferredSizeWidget {
                   style: TextStyle(
                     color: textColor1,
                     fontFamily: "LD",
-                    fontSize: 19,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

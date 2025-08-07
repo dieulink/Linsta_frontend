@@ -11,8 +11,8 @@ class CartService {
     );
     final prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    print("id nè ${userId}");
-    print(token);
+    // print("id nè ${userId}");
+    // print(token);
     try {
       final response = await http.get(
         url,
@@ -30,6 +30,7 @@ class CartService {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         return CartResponse.fromJson(data);
+        print(data);
       } else {
         print('Lỗi status: ${response.statusCode}');
         return null;
@@ -112,9 +113,42 @@ class CartService {
         // body: json.encode(request.toJson()),
       );
       if (response.body.isEmpty) {
-        //print("Body rỗng");
+        print("Body rỗng");
       } else {
-        //print("Response body: ${response.body}");
+        print("Response body: ${response.body}");
+      }
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return CartResponse.fromJson(data);
+      } else {
+        print('Lỗi status: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      print('Lỗi fetch cart: $e');
+      return null;
+    }
+  }
+
+  static Future<CartResponse?> decrease(int productId, int userId) async {
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/cart/decrease?userId=$userId&productId=$productId',
+    );
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        // body: json.encode(request.toJson()),
+      );
+      if (response.body.isEmpty) {
+        print("Body rỗng");
+      } else {
+        print("Response body: ${response.body}");
       }
       if (response.statusCode == 200) {
         final data = json.decode(response.body);

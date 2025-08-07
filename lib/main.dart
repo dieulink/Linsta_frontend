@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/screens/account_screens/address/address_page.dart';
-import 'package:linsta_app/screens/account_screens/order/order_page.dart';
+import 'package:linsta_app/screens/account_screens/list_order/done_order_page.dart';
+import 'package:linsta_app/screens/account_screens/list_order/list_order_page.dart';
+import 'package:linsta_app/screens/account_screens/list_order/processing_page.dart';
+import 'package:linsta_app/screens/account_screens/list_order/shipping_page.dart';
 import 'package:linsta_app/screens/account_screens/profile/edit_email_page.dart';
 import 'package:linsta_app/screens/account_screens/profile/edit_name_page.dart';
 import 'package:linsta_app/screens/account_screens/profile/edit_phone_page.dart';
@@ -16,6 +19,11 @@ import 'package:linsta_app/screens/login_screens/login_page.dart';
 import 'package:linsta_app/screens/login_screens/on_boarding_page.dart';
 import 'package:linsta_app/screens/login_screens/register_page.dart';
 import 'package:linsta_app/screens/login_screens/reset_password_page.dart';
+import 'package:linsta_app/screens/order_screens/edit_receive_name.dart';
+import 'package:linsta_app/screens/order_screens/order_page.dart';
+import 'package:linsta_app/screens/rating/rating_page.dart';
+import 'package:linsta_app/screens/rating/write_rating_page.dart';
+import 'package:linsta_app/screens/rating/your_rating_page.dart';
 import 'package:linsta_app/ui_values.dart';
 
 void main() {
@@ -45,9 +53,16 @@ class MyApp extends StatelessWidget {
         "orderPage": (context) => OrderPage(),
         "addressPage": (context) => AddressPage(),
         "editNamePage": (context) => EditNamePage(),
-
+        "editReceiveNamePage": (context) => EditReceiveNamePage(),
+        "listOrderPage": (context) => ListOrderPage(),
+        "doneOrderPage": (context) => DoneOrderPage(),
+        "shippingPage": (context) => ShippingPage(),
+        "processingPage": (context) => ProcessingPage(),
+        "ratingPage": (context) => RatingPage(),
+        "yourRatingPage": (context) => YourRatingPage(),
         // "editEmailPage": (context) => EditEmailPage(),
         // "editPhonePage": (context) => EditPhonePage(),
+        "writeRatingPage": (context) => WriteRatingPage(),
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/screens/account_screens/profile/profile_page.dart';
 import 'package:linsta_app/screens/account_screens/widgets/app_bar_profile.dart';
+import 'package:linsta_app/screens/account_screens/widgets/button_edit_address.dart';
 import 'package:linsta_app/screens/account_screens/widgets/button_edit_email.dart';
 import 'package:linsta_app/screens/account_screens/widgets/button_edit_name.dart';
 import 'package:linsta_app/screens/account_screens/widgets/text_edit.dart';
@@ -34,10 +35,10 @@ class _AddressPageState extends State<AddressPage> {
 
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
+    final AddressController = TextEditingController();
     return Scaffold(
+      appBar: AppBarProfile(name: "Chỉnh sửa địa chỉ"),
       backgroundColor: white,
-      //appBar: AppBarProfile(name: "Địa chỉ Email"),
       body: Container(
         padding: EdgeInsets.all(15),
         child: SingleChildScrollView(
@@ -62,10 +63,16 @@ class _AddressPageState extends State<AddressPage> {
                 ),
               ),
               Container(
-                child: TextEdit(hintText: address, controller: emailController),
+                child: TextEdit(
+                  hintText: address,
+                  controller: AddressController,
+                ),
               ),
               SizedBox(height: 20),
-              ButtonEditEmail(text: "Chỉnh sửa"),
+              ButtonEditAddress(
+                AddressController: AddressController,
+                text: "Cập nhật",
+              ),
             ],
           ),
         ),
