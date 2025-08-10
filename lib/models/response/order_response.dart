@@ -1,6 +1,7 @@
 import 'order_detail_response.dart';
 
 class OrderResponse {
+  final int id;
   final int userId;
   final int quantity;
   final int totalPrice;
@@ -13,6 +14,7 @@ class OrderResponse {
   final List<OrderDetailResponse> items;
 
   OrderResponse({
+    required this.id,
     required this.userId,
     required this.quantity,
     required this.totalPrice,
@@ -27,6 +29,7 @@ class OrderResponse {
 
   factory OrderResponse.fromJson(Map<String, dynamic> json) {
     return OrderResponse(
+      id: json['orderId'],
       userId: json['userId'],
       quantity: json['quantity'],
       totalPrice: json['totalPrice'],

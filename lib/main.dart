@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/screens/account_screens/address/address_page.dart';
+import 'package:linsta_app/screens/account_screens/list_order/detail_ordered.dart';
 import 'package:linsta_app/screens/account_screens/list_order/done_order_page.dart';
 import 'package:linsta_app/screens/account_screens/list_order/list_order_page.dart';
 import 'package:linsta_app/screens/account_screens/list_order/processing_page.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
         // "editEmailPage": (context) => EditEmailPage(),
         // "editPhonePage": (context) => EditPhonePage(),
         "writeRatingPage": (context) => WriteRatingPage(),
+        "orderDetailPage": (context) => DetailOrdered(),
       },
     );
   }

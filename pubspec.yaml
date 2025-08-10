@@ -86,8 +86,11 @@ flutter:
   fonts:
     - family: LD
       fonts:
-        - asset: assets/fonts/LexendDeca-Light.ttf
-        - asset: assets/fonts/LexendDeca-Bold.ttf
+        # - asset: assets/fonts/LexendDeca-Light.ttf
+        # - asset: assets/fonts/LexendDeca-Bold.ttf
+        #   weight: 900
+        - asset: assets/fonts/test/Inter_18pt-Light.ttf
+        - asset: assets/fonts/test/Inter_18pt-Bold.ttf
           weight: 900
   #
   # For details regarding fonts from package dependencies,

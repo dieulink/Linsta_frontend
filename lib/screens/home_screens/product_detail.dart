@@ -275,7 +275,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               margin: const EdgeInsets.all(20),
-                              duration: const Duration(seconds: 2),
+                              duration: const Duration(seconds: 1),
                               elevation: 8,
                             ),
                           );
@@ -312,7 +312,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 margin: const EdgeInsets.all(20),
-                                duration: const Duration(seconds: 2),
+                                duration: const Duration(seconds: 1),
                                 elevation: 8,
                               ),
                             );
@@ -337,7 +337,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 margin: const EdgeInsets.all(20),
-                                duration: const Duration(seconds: 2),
+                                duration: const Duration(seconds: 1),
                                 elevation: 8,
                               ),
                             );

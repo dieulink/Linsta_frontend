@@ -83,6 +83,7 @@ class _CartPageState extends State<CartPage> {
 
     if (cartResponse == null || cartResponse!.cartItems.isEmpty) {
       return Scaffold(
+        backgroundColor: white,
         appBar: AppBarCartCustom(),
         body: Center(
           child: Text(
@@ -131,11 +132,14 @@ class _CartPageState extends State<CartPage> {
                   price: item.price,
                   quantity: item.quantity,
                   productId: item.productId,
-                  onDeleteSuccess: () {
+                  onDeleteSuccess: () async {
+                    await loadCart();
                     setState(() {
-                      cartResponse!.cartItems.removeAt(index);
+                      updateTotalPrice();
+                      updateTotalQuantity();
                     });
                   },
+
                   onIncreaseSuccess: () async {
                     await loadCart();
                     updateTotalPrice();

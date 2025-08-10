@@ -77,7 +77,17 @@ class _RatingPageState extends State<RatingPage> {
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
           : _ratings.isEmpty
-          ? Center(child: Text("Chưa có đánh giá nào."))
+          ? Center(
+              child: Text(
+                "Chưa có đánh giá nào.",
+                style: TextStyle(
+                  color: textColor1,
+                  fontFamily: "LD",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            )
           : ListView.builder(
               padding: EdgeInsets.all(10),
               itemCount: _ratings.length,

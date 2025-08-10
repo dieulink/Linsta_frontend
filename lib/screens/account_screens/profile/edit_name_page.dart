@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:linsta_app/screens/account_screens/profile/profile_page.dart';
-import 'package:linsta_app/screens/account_screens/widgets/app_bar_profile.dart';
-import 'package:linsta_app/screens/account_screens/widgets/button_edit_name.dart';
-import 'package:linsta_app/screens/account_screens/widgets/text_edit.dart';
+import 'package:linsta_app/screens/account_screens/profile/widgets/app_bar_profile.dart';
+import 'package:linsta_app/screens/account_screens/profile/widgets/button_edit_name.dart';
+import 'package:linsta_app/screens/account_screens/profile/widgets/text_edit.dart';
 import 'package:linsta_app/ui_values.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

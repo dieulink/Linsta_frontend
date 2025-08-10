@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:linsta_app/models/response/order_response.dart';
-import 'package:linsta_app/screens/account_screens/widgets/app_bar_profile.dart';
+import 'package:linsta_app/screens/account_screens/profile/widgets/app_bar_profile.dart';
 import 'package:linsta_app/screens/home_screens/widgets/app_bar_cart_custom.dart';
 import 'package:linsta_app/services/order_service.dart';
 import 'package:linsta_app/ui_values.dart';
@@ -81,52 +81,61 @@ class _DoneOrderPageState extends State<DoneOrderPage> {
                     borderRadius: BorderRadius.circular(7),
                   ),
 
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Người nhận: ${order.receiveName}",
-                        style: TextStyle(
-                          color: textColor3,
-                          fontFamily: "LD",
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Nơi nhận: ${order.receiveAddress}",
-                        style: TextStyle(
-                          color: textColor3,
-                          fontFamily: "LD",
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Giá tiền: ${NumberFormat("#,###", "vi_VN").format(order.totalPrice)}",
-                            style: TextStyle(
-                              color: textColor3,
-                              fontFamily: "LD",
-                              fontSize: 13,
-                              //fontWeight: FontWeight.bold,
-                            ),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        "orderDetailPage",
+                        arguments: order.id,
+                      );
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Người nhận: ${order.receiveName}",
+                          style: TextStyle(
+                            color: textColor3,
+                            fontFamily: "LD",
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Text(
-                            "${order.status}",
-                            style: TextStyle(
-                              color: textColor3,
-                              fontFamily: "LD",
-                              fontSize: 13,
-                              //fontWeight: FontWeight.bold,
-                            ),
+                        ),
+                        Text(
+                          "Nơi nhận: ${order.receiveAddress}",
+                          style: TextStyle(
+                            color: textColor3,
+                            fontFamily: "LD",
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Giá tiền: ${NumberFormat("#,###", "vi_VN").format(order.totalPrice)}",
+                              style: TextStyle(
+                                color: textColor3,
+                                fontFamily: "LD",
+                                fontSize: 13,
+                                //fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "${order.status}",
+                              style: TextStyle(
+                                color: textColor3,
+                                fontFamily: "LD",
+                                fontSize: 13,
+                                //fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

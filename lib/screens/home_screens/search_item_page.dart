@@ -25,7 +25,7 @@ class _SearchItemPageState extends State<SearchItemPage> {
 
   void _onSearchChanged(String keyword) {
     if (_debounce?.isActive ?? false) _debounce!.cancel();
-    _debounce = Timer(const Duration(milliseconds: 200), () async {
+    _debounce = Timer(const Duration(milliseconds: 100), () async {
       currentKeyword = keyword;
       currentPage = 0;
       hasMore = true;

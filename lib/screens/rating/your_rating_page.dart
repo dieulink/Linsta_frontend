@@ -53,7 +53,17 @@ class _YourRatingPageState extends State<YourRatingPage> {
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
           : _ratings.isEmpty
-          ? Center(child: Text("Chưa có đánh giá nào."))
+          ? Center(
+              child: Text(
+                "Chưa có đánh giá nào.",
+                style: TextStyle(
+                  color: textColor1,
+                  fontFamily: "LD",
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            )
           : ListView.builder(
               padding: EdgeInsets.all(10),
               itemCount: _ratings.length,
@@ -67,18 +77,56 @@ class _YourRatingPageState extends State<YourRatingPage> {
                   ratingId: rating.id,
                   onDelete: () async {
                     try {
-                      final result = await RatingService.deleteRating(
-                        rating.id,
+                      await RatingService.deleteRating(rating.id);
+                      await fetchRatings(_productId!);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Row(
+                            children: [
+                              Icon(Icons.download_done_rounded, color: white),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Text(
+                                  "Đã xóa đánh giá",
+                                  style: TextStyle(fontFamily: "LD"),
+                                ),
+                              ),
+                            ],
+                          ),
+                          backgroundColor: textColor1,
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          margin: const EdgeInsets.all(20),
+                          duration: const Duration(seconds: 1),
+                          elevation: 8,
+                        ),
                       );
-                      setState(() {
-                        _ratings = result.ratings;
-                      });
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text(result.message)));
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Xóa thất bại: $e")),
+                        SnackBar(
+                          content: Row(
+                            children: [
+                              Icon(Icons.error_outline, color: white),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Text(
+                                  "Xóa thất bại",
+                                  style: TextStyle(fontFamily: "LD"),
+                                ),
+                              ),
+                            ],
+                          ),
+                          backgroundColor: textColor1,
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          margin: const EdgeInsets.all(20),
+                          duration: const Duration(seconds: 1),
+                          elevation: 8,
+                        ),
                       );
                     }
                   },
@@ -96,7 +144,11 @@ class _YourRatingPageState extends State<YourRatingPage> {
           width: getWidth(context) * 0.8,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, "writeRatingPage");
+              Navigator.pushNamed(
+                context,
+                "writeRatingPage",
+                arguments: {'productId': _productId!},
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: mainColor,

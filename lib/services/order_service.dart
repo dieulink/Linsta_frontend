@@ -63,4 +63,32 @@ class OrderService {
       throw Exception("Lỗi kết nối tới server: $e");
     }
   }
+
+  Future<OrderResponse> getOrdersByOrderId(int id) async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/order/order_detail?orderId=$id',
+    );
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+      print(response.body);
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body);
+        return OrderResponse.fromJson(json);
+      } else {
+        throw Exception(
+          "Lỗi khi lấy danh sách đơn hàng: ${response.statusCode}",
+        );
+      }
+    } catch (e) {
+      throw Exception("Lỗi kết nối tới server: $e");
+    }
+  }
 }

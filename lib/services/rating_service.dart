@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:linsta_app/models/request/rating_request.dart';
 import 'package:linsta_app/models/response/delete_rating_result.dart';
 import 'package:linsta_app/models/response/rating_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -78,9 +79,16 @@ class RatingService {
     final url = Uri.parse(
       "http://192.168.5.136:8080/api/rating/check_purchased?userId=$userId&productId=$productId",
     );
-
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
     try {
-      final response = await http.get(url);
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
 
       if (response.statusCode == 200) {
         return int.parse(response.body);
@@ -90,6 +98,27 @@ class RatingService {
     } catch (e) {
       print("Lỗi khi gọi API kiểm tra mua hàng: $e");
       rethrow;
+    }
+  }
+
+  static Future<DeleteRatingResult> addRating(RatingRequest request) async {
+    final url = Uri.parse('http://192.168.5.136:8080/api/rating/add');
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode(request.toJson()),
+    );
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> jsonBody = jsonDecode(response.body);
+      return DeleteRatingResult.fromJson(jsonBody);
+    } else {
+      throw Exception('lỗi');
     }
   }
 }

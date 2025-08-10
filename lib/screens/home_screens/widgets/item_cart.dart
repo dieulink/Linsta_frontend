@@ -83,7 +83,8 @@ class _ItemCartState extends State<ItemCart> {
                           widget.productId,
                           id,
                         );
-                        if (response != null) {
+                        print("responseeeeeeeeeeeee nè ${response?.total}");
+                        if (response?.total != 0) {
                           widget.onDeleteSuccess();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -184,7 +185,7 @@ class _ItemCartState extends State<ItemCart> {
                                 id,
                               );
                               //print("đây là responsee $response");
-                              if (response != null) {
+                              if (response?.total != 0) {
                                 widget.onDecreaseSuccess();
                                 print("okeee");
                               } else {
@@ -209,7 +210,7 @@ class _ItemCartState extends State<ItemCart> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     margin: const EdgeInsets.all(20),
-                                    duration: const Duration(seconds: 2),
+                                    duration: const Duration(seconds: 1),
                                     elevation: 8,
                                   ),
                                 );
@@ -265,7 +266,7 @@ class _ItemCartState extends State<ItemCart> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     margin: const EdgeInsets.all(20),
-                                    duration: const Duration(seconds: 2),
+                                    duration: const Duration(seconds: 1),
                                     elevation: 8,
                                   ),
                                 );

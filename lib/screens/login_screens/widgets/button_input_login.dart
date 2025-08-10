@@ -45,7 +45,7 @@ class ButtonInput extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               margin: const EdgeInsets.all(30),
-              duration: const Duration(seconds: 2),
+              duration: const Duration(seconds: 1),
               elevation: 8,
             ),
           );
@@ -82,7 +82,7 @@ class ButtonInput extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               margin: const EdgeInsets.all(30),
-              duration: const Duration(seconds: 2),
+              duration: const Duration(seconds: 1),
               elevation: 8,
             ),
           );
