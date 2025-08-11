@@ -79,7 +79,30 @@ class ButtonInputRegister extends StatelessWidget {
           );
 
           if (response != null && response.token.isNotEmpty) {
-            Navigator.pushNamed(context, "home");
+            final prefs = await SharedPreferences.getInstance();
+            String role = prefs.getString('role') ?? '';
+            if (role == 'ROLE_ADMIN') {
+              Navigator.pushNamed(context, "adminPage");
+            } else if (role == 'ROLE_USER') {
+              Navigator.pushNamed(context, "home");
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    "Vai trò không hợp lệ",
+                    style: TextStyle(fontFamily: "LD"),
+                  ),
+                  backgroundColor: textColor1,
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: const EdgeInsets.all(30),
+                  duration: const Duration(seconds: 1),
+                  elevation: 8,
+                ),
+              );
+            }
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

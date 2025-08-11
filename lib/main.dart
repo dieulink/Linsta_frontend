@@ -9,6 +9,15 @@ import 'package:linsta_app/screens/account_screens/profile/edit_email_page.dart'
 import 'package:linsta_app/screens/account_screens/profile/edit_name_page.dart';
 import 'package:linsta_app/screens/account_screens/profile/edit_phone_page.dart';
 import 'package:linsta_app/screens/account_screens/profile/profile_page.dart';
+import 'package:linsta_app/screens/admin/admin_manage_order.dart';
+import 'package:linsta_app/screens/admin/admin_manage_user.dart';
+import 'package:linsta_app/screens/admin/home_admin.dart';
+import 'package:linsta_app/screens/admin/manage_orders/admin_order_details.dart';
+import 'package:linsta_app/screens/admin/manage_orders/done_order.dart';
+import 'package:linsta_app/screens/admin/manage_orders/processing_order.dart';
+import 'package:linsta_app/screens/admin/manage_orders/shipping_order.dart';
+import 'package:linsta_app/screens/admin/manage_users/list_order_user.dart';
+import 'package:linsta_app/screens/admin/manage_users/search_user.dart';
 import 'package:linsta_app/screens/home_screens/cart_page.dart';
 import 'package:linsta_app/screens/home_screens/category_item_page.dart';
 import 'package:linsta_app/screens/home_screens/home.dart';
@@ -65,6 +74,15 @@ class MyApp extends StatelessWidget {
         // "editPhonePage": (context) => EditPhonePage(),
         "writeRatingPage": (context) => WriteRatingPage(),
         "orderDetailPage": (context) => DetailOrdered(),
+        "adminPage": (context) => HomeAdmin(),
+        "adminManageOrder": (context) => AdminManageOrder(),
+        "adminDoneOrder": (context) => DoneOrder(),
+        "adminShippingOrder": (context) => ShippingOrder(),
+        "adminProcessingOrder": (context) => ProcessingOrder(),
+        "adminOrderDetailPage": (context) => AdminOrderDetails(),
+        "adminManageUser": (context) => AdminManageUser(),
+        "adminSearchUser": (context) => SearchUser(),
+        "listOrderUser": (context) => ListOrderUser(),
       },
     );
   }

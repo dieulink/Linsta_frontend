@@ -4,7 +4,7 @@ import 'package:linsta_app/ui_values.dart';
 class TagAccount extends StatelessWidget {
   final String imgPath;
   final String name;
-  final String ontap;
+  final dynamic ontap;
 
   const TagAccount({
     super.key,
@@ -17,7 +17,11 @@ class TagAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, ontap);
+        if (ontap is String) {
+          Navigator.pushNamed(context, ontap);
+        } else if (ontap is Function) {
+          ontap();
+        }
       },
       child: Container(
         alignment: Alignment.centerLeft,

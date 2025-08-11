@@ -42,6 +42,7 @@ dependencies:
   intl: ^0.18.1
   shared_preferences: ^2.2.2
   jwt_decoder: ^2.0.1
+  fl_chart: ^0.69.0
 
 dev_dependencies:
   flutter_test:
@@ -89,7 +90,7 @@ flutter:
         # - asset: assets/fonts/LexendDeca-Light.ttf
         # - asset: assets/fonts/LexendDeca-Bold.ttf
         #   weight: 900
-        - asset: assets/fonts/test/Inter_18pt-Light.ttf
+        - asset: assets/fonts/test/Inter_18pt-Regular.ttf
         - asset: assets/fonts/test/Inter_18pt-Bold.ttf
           weight: 900
   #
