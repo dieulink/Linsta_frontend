@@ -49,6 +49,34 @@ class ButtonEditAddress extends StatelessWidget {
           );
           return;
         }
+        if (AddressController.text.trim().length < 10 ||
+            AddressController.text.trim().length > 100) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Độ dài địa chỉ không hợp lệ !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
         int id = int.parse(userId);
         final request = EditAddressRequest(
           id: id,

@@ -42,7 +42,7 @@ class ItemUser extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "id: $id",
+                  "_ID: $id",
                   style: TextStyle(
                     fontFamily: "LD",
                     fontSize: 14,

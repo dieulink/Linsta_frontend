@@ -48,7 +48,34 @@ class ButtonInputConfirmPassword extends StatelessWidget {
           );
           return;
         }
-
+        final RegExp emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+        if (!emailRegex.hasMatch(email)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Email không hợp lệ !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
         final loginService = LoginService();
         final response = await loginService.confirmEmail(email);
 

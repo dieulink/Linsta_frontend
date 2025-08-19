@@ -57,6 +57,36 @@ class ButtonInputResetPassword extends StatelessWidget {
           );
           return;
         }
+        final RegExp passwordRegex = RegExp(r'^[a-zA-Z0-9]{6,8}$');
+
+        if (!passwordRegex.hasMatch(password)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Mật khẩu từ 6-8 kí tự, chỉ chứa chữ cái và số !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
+
         if (password_confirm != password) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -84,6 +114,7 @@ class ButtonInputResetPassword extends StatelessWidget {
           );
           return;
         }
+
         final request = UserResetPasswordRequest(
           email: email,
           password: password,

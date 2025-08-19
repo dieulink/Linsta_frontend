@@ -91,4 +91,30 @@ class OrderService {
       throw Exception("Lỗi kết nối tới server: $e");
     }
   }
+
+  Future<bool> markOrderDone(int id) async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/order/done_order/${id}',
+    );
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print("Lỗi khi gọi API markOrderDone: $e");
+      return false;
+    }
+  }
 }

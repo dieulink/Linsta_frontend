@@ -10,14 +10,24 @@ import 'package:linsta_app/screens/account_screens/profile/edit_name_page.dart';
 import 'package:linsta_app/screens/account_screens/profile/edit_phone_page.dart';
 import 'package:linsta_app/screens/account_screens/profile/profile_page.dart';
 import 'package:linsta_app/screens/admin/admin_manage_order.dart';
+import 'package:linsta_app/screens/admin/admin_manage_product.dart';
 import 'package:linsta_app/screens/admin/admin_manage_user.dart';
+import 'package:linsta_app/screens/admin/admin_revenue_product.dart';
+import 'package:linsta_app/screens/admin/admin_revenue_user.dart';
 import 'package:linsta_app/screens/admin/home_admin.dart';
 import 'package:linsta_app/screens/admin/manage_orders/admin_order_details.dart';
 import 'package:linsta_app/screens/admin/manage_orders/done_order.dart';
 import 'package:linsta_app/screens/admin/manage_orders/processing_order.dart';
 import 'package:linsta_app/screens/admin/manage_orders/shipping_order.dart';
+import 'package:linsta_app/screens/admin/manage_products/list_products.dart';
 import 'package:linsta_app/screens/admin/manage_users/list_order_user.dart';
 import 'package:linsta_app/screens/admin/manage_users/search_user.dart';
+import 'package:linsta_app/screens/admin/revenue_product/by_month_product.dart';
+import 'package:linsta_app/screens/admin/revenue_product/current_year_product.dart';
+import 'package:linsta_app/screens/admin/revenue_product/last_6_month_product.dart';
+import 'package:linsta_app/screens/admin/revenue_user/by_month.dart';
+import 'package:linsta_app/screens/admin/revenue_user/current_year.dart';
+import 'package:linsta_app/screens/admin/revenue_user/last_6_month.dart';
 import 'package:linsta_app/screens/home_screens/cart_page.dart';
 import 'package:linsta_app/screens/home_screens/category_item_page.dart';
 import 'package:linsta_app/screens/home_screens/home.dart';
@@ -76,13 +86,23 @@ class MyApp extends StatelessWidget {
         "orderDetailPage": (context) => DetailOrdered(),
         "adminPage": (context) => HomeAdmin(),
         "adminManageOrder": (context) => AdminManageOrder(),
-        "adminDoneOrder": (context) => DoneOrder(),
-        "adminShippingOrder": (context) => ShippingOrder(),
-        "adminProcessingOrder": (context) => ProcessingOrder(),
+        "adminDoneOrder": (context) => AdminDoneOrder(),
+        "adminShippingOrder": (context) => AdminShippingOrder(),
+        "adminProcessingOrder": (context) => AdminProcessingOrder(),
         "adminOrderDetailPage": (context) => AdminOrderDetails(),
         "adminManageUser": (context) => AdminManageUser(),
         "adminSearchUser": (context) => SearchUser(),
         "listOrderUser": (context) => ListOrderUser(),
+        "adminManageProduct": (context) => AdminManageProduct(),
+        "listProducts": (context) => ListProducts(),
+        "adminRevenueProduct": (context) => AdminRevenueProduct(),
+        "adminRevenueUser": (context) => AdminRevenueUser(),
+        "byMonth": (context) => ByMonth(),
+        "last6Month": (context) => Last6Month(),
+        "currentYear": (context) => CurrentYear(),
+        "byMonthProduct": (context) => ByMonthProduct(),
+        "last6MonthProduct": (context) => Last6MonthProduct(),
+        "currentYearProduct": (context) => CurrentYearProduct(),
       },
     );
   }

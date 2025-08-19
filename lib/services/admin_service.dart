@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:linsta_app/models/response/daily_revenue.dart';
 import 'package:linsta_app/models/response/order_response.dart';
+import 'package:linsta_app/models/response/product_revenue.dart';
 import 'package:linsta_app/models/response/summary.dart';
 import 'package:linsta_app/models/response/user.dart';
+import 'package:linsta_app/models/response/user_revenue.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminService {
@@ -212,6 +214,180 @@ class AdminService {
       }
     } catch (e) {
       throw Exception('Error connecting to server: $e');
+    }
+  }
+
+  static Future<List<UserRevenue>> fetchRevenueByMonth(
+    int month,
+    int year,
+  ) async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/admin/user/revenue_by_month?month=$month&year=$year',
+    );
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        List<dynamic> data = jsonDecode(response.body);
+        return data.map((e) => UserRevenue.fromJson(e)).toList();
+      } else {
+        throw Exception(
+          'lỗi khi lấy doanh thu theo tháng: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      throw Exception('lỗi: $e');
+    }
+  }
+
+  static Future<List<UserRevenue>> fetchRevenue6Month() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/admin/user/revenue_6_month',
+    );
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        List<dynamic> data = jsonDecode(response.body);
+        return data.map((e) => UserRevenue.fromJson(e)).toList();
+      } else {
+        throw Exception(
+          'lỗi khi lấy doanh thu theo tháng: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      throw Exception('lỗi: $e');
+    }
+  }
+
+  static Future<List<UserRevenue>> fetchRevenueCurrentYear() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/admin/user/revenue_current_year',
+    );
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        List<dynamic> data = jsonDecode(response.body);
+        return data.map((e) => UserRevenue.fromJson(e)).toList();
+      } else {
+        throw Exception(
+          'lỗi khi lấy doanh thu theo NĂM: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      throw Exception('lỗi: $e');
+    }
+  }
+
+  static Future<List<ProductRevenue>> fetchProductRevenueByMonth(
+    int month,
+    int year,
+  ) async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/admin/product/revenue_by_month?month=$month&year=$year',
+    );
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        List<dynamic> data = jsonDecode(response.body);
+        return data.map((e) => ProductRevenue.fromJson(e)).toList();
+      } else {
+        throw Exception(
+          'lỗi khi lấy doanh thu theo tháng: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      throw Exception('lỗi: $e');
+    }
+  }
+
+  static Future<List<ProductRevenue>> fetchProductRevenue6Month() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/admin/product/revenue_6_month',
+    );
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        List<dynamic> data = jsonDecode(response.body);
+        return data.map((e) => ProductRevenue.fromJson(e)).toList();
+      } else {
+        throw Exception(
+          'lỗi khi lấy doanh thu theo tháng: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      throw Exception('lỗi: $e');
+    }
+  }
+
+  static Future<List<ProductRevenue>> fetchProductRevenueCurrentYear() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final url = Uri.parse(
+      'http://192.168.5.136:8080/api/admin/product/revenue_current_year',
+    );
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        List<dynamic> data = jsonDecode(response.body);
+        return data.map((e) => ProductRevenue.fromJson(e)).toList();
+      } else {
+        throw Exception(
+          'lỗi khi lấy doanh thu theo tháng: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      throw Exception('lỗi: $e');
     }
   }
 }

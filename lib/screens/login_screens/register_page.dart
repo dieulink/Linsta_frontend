@@ -15,6 +15,7 @@ class RegisterPage extends StatelessWidget {
     final phoneController = TextEditingController();
     final addressController = TextEditingController();
     return Scaffold(
+      backgroundColor: white,
       body: Container(
         padding: EdgeInsets.all(20),
         height: getHeight(context),
@@ -102,7 +103,9 @@ class RegisterPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, "loginPage");
+                    },
                     child: Text(
                       "Đăng nhập",
                       style: TextStyle(

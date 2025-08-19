@@ -160,9 +160,9 @@ class _HomePageState extends State<HomePage> {
         decoration: BoxDecoration(
           gradient: RadialGradient(
             colors: [mainColor, backgroudColor],
-            stops: [0.8, 0.9],
+            stops: [0.6, 0.6001],
             center: Alignment.topCenter,
-            radius: 1,
+            radius: 1.2,
           ),
         ),
         child: SingleChildScrollView(
@@ -228,9 +228,13 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadiusGeometry.circular(
                                     100,
                                   ),
-                                  child: Image.asset(
-                                    "assets/icons/cate_icon/${Category.id}.png",
-                                    fit: BoxFit.fill,
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/icons/cate_icon/${Category.id}.png",
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -276,6 +280,25 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: ClipRRect(
+                      child: Image.asset(
+                        "assets/imgs/home1.png",
+                        height: 160,
+                        width: getWidth(context) * 0.955,
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 10),
               MasonryGridView.count(

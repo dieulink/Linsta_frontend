@@ -5,12 +5,14 @@ class TagHome extends StatelessWidget {
   final String imgPath;
   final String name;
   final dynamic ontap;
+  final Color color;
 
   const TagHome({
     super.key,
     required this.imgPath,
     required this.name,
     required this.ontap,
+    required this.color,
   });
 
   @override
@@ -28,7 +30,7 @@ class TagHome extends StatelessWidget {
         padding: EdgeInsets.only(left: 15),
         margin: EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: white,
+          color: color,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: mainColor, width: 1),
         ),

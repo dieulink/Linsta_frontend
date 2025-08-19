@@ -11,6 +11,8 @@ class OrderResponse {
   final int shipCost;
   final String status;
   final int payMethodId;
+  final DateTime createdAt;
+  final DateTime doneAt;
   final List<OrderDetailResponse> items;
 
   OrderResponse({
@@ -25,6 +27,8 @@ class OrderResponse {
     required this.status,
     required this.payMethodId,
     required this.items,
+    required this.createdAt,
+    required this.doneAt,
   });
 
   factory OrderResponse.fromJson(Map<String, dynamic> json) {
@@ -42,6 +46,10 @@ class OrderResponse {
       items: (json['items'] as List)
           .map((item) => OrderDetailResponse.fromJson(item))
           .toList(),
+      createdAt: DateTime.parse(json['createdAt']),
+      doneAt: json['doneAt'] != null
+          ? DateTime.parse(json['doneAt'])
+          : DateTime(0, 0, 0),
     );
   }
 }

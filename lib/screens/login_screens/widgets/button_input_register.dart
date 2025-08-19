@@ -63,60 +63,228 @@ class ButtonInputRegister extends StatelessWidget {
             ),
           );
           return;
-        } else {
-          final request = UserRegisterRequest(
-            email: email,
-            password: password,
-            name: name,
-            phone: phone,
-            address: address,
-          );
+        }
+        final RegExp emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+        final RegExp passwordRegex = RegExp(r'^[a-zA-Z0-9]{6,8}$');
+        final RegExp phoneRegex = RegExp(r'^(0|\+84)[0-9]{9}$');
+        final RegExp nameRegex = RegExp(r'^[a-zA-ZÀ-ỹ\s]+$');
 
-          final loginService = LoginService();
-          final response = await loginService.register(request);
-          print(
-            "Token value: ${response?.token}, isNull: ${response?.token == null}",
+        if (!emailRegex.hasMatch(email)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Email không hợp lệ !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
           );
+          return;
+        }
+        if (!passwordRegex.hasMatch(password)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Mật khẩu từ 6-8 kí tự, chỉ chứa chữ cái và số !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
+        if (!phoneRegex.hasMatch(phone)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Số điện thoại không hợp lệ !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
+        if (name.length > 50) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Tên đăng kí quá dài !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
+        if (!nameRegex.hasMatch(name)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Tên đăng kí không chứa số và kí tự đặc biệt !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
+        if (address.length > 100) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Địa chỉ đăng kí quá dài !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
+        if (address.length < 10 || address.length > 100) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Độ dài địa chỉ không hợp lệ !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
+        final request = UserRegisterRequest(
+          email: email,
+          password: password,
+          name: name,
+          phone: phone,
+          address: address,
+        );
 
-          if (response != null && response.token.isNotEmpty) {
-            final prefs = await SharedPreferences.getInstance();
-            String role = prefs.getString('role') ?? '';
-            if (role == 'ROLE_ADMIN') {
-              Navigator.pushNamed(context, "adminPage");
-            } else if (role == 'ROLE_USER') {
-              Navigator.pushNamed(context, "home");
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    "Vai trò không hợp lệ",
-                    style: TextStyle(fontFamily: "LD"),
-                  ),
-                  backgroundColor: textColor1,
-                  behavior: SnackBarBehavior.floating,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  margin: const EdgeInsets.all(30),
-                  duration: const Duration(seconds: 1),
-                  elevation: 8,
-                ),
-              );
-            }
+        final loginService = LoginService();
+        final response = await loginService.register(request);
+        print(
+          "Token value: ${response?.token}, isNull: ${response?.token == null}",
+        );
+
+        if (response != null && response.token.isNotEmpty) {
+          final prefs = await SharedPreferences.getInstance();
+          String role = prefs.getString('role') ?? '';
+          if (role == 'ROLE_ADMIN') {
+            Navigator.pushNamed(context, "adminPage");
+          } else if (role == 'ROLE_USER') {
+            Navigator.pushNamed(context, "home");
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Row(
-                  children: [
-                    Icon(Icons.error_outline, color: white),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        response!.message,
-                        style: TextStyle(fontFamily: "LD"),
-                      ),
-                    ),
-                  ],
+                content: Text(
+                  "Vai trò không hợp lệ",
+                  style: TextStyle(fontFamily: "LD"),
                 ),
                 backgroundColor: textColor1,
                 behavior: SnackBarBehavior.floating,
@@ -129,6 +297,31 @@ class ButtonInputRegister extends StatelessWidget {
               ),
             );
           }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.error_outline, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      response!.message,
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
         }
       },
       style: ElevatedButton.styleFrom(

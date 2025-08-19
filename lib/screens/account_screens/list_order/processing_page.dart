@@ -134,6 +134,16 @@ class _ProcessingPageState extends State<ProcessingPage> {
                             ),
                           ],
                         ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Ngày đặt hàng: ${DateFormat('dd/MM/yyyy').format(order.createdAt)}",
+                          style: TextStyle(
+                            color: textColor3,
+                            fontFamily: "LD",
+                            fontSize: 13,
+                            //fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),

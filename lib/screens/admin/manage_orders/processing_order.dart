@@ -7,14 +7,14 @@ import 'package:linsta_app/services/admin_service.dart';
 import 'package:linsta_app/services/order_service.dart';
 import 'package:linsta_app/ui_values.dart';
 
-class ProcessingOrder extends StatefulWidget {
-  const ProcessingOrder({super.key});
+class AdminProcessingOrder extends StatefulWidget {
+  const AdminProcessingOrder({super.key});
 
   @override
-  State<ProcessingOrder> createState() => _ProcessingOrderState();
+  State<AdminProcessingOrder> createState() => _AdminProcessingOrderState();
 }
 
-class _ProcessingOrderState extends State<ProcessingOrder> {
+class _AdminProcessingOrderState extends State<AdminProcessingOrder> {
   late Future<List<OrderResponse>> futureOrders;
 
   @override
@@ -97,14 +97,28 @@ class _ProcessingOrderState extends State<ProcessingOrder> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Người nhận: ${order.receiveName}",
-                          style: TextStyle(
-                            color: textColor3,
-                            fontFamily: "LD",
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              "Người nhận: ${order.receiveName}",
+                              style: TextStyle(
+                                color: textColor3,
+                                fontFamily: "LD",
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              "ID: ${order.id}",
+                              style: TextStyle(
+                                color: textColor1,
+                                fontFamily: "LD",
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                         Text(
                           "Nơi nhận: ${order.receiveAddress}",
@@ -138,6 +152,26 @@ class _ProcessingOrderState extends State<ProcessingOrder> {
                               ),
                             ),
                           ],
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Ngày đặt hàng: ${DateFormat('dd/MM/yyyy').format(order.createdAt)}",
+                          style: TextStyle(
+                            color: textColor3,
+                            fontFamily: "LD",
+                            fontSize: 13,
+                            //fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Ngày nhận hàng: ${DateFormat('dd/MM/yyyy').format(order.doneAt)}",
+                          style: TextStyle(
+                            color: textColor3,
+                            fontFamily: "LD",
+                            fontSize: 13,
+                            //fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),

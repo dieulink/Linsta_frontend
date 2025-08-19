@@ -49,6 +49,35 @@ class ButtonEditName extends StatelessWidget {
           );
           return;
         }
+        final RegExp nameRegex = RegExp(r'^[a-zA-ZÀ-ỹ\s]+$');
+        if (!nameRegex.hasMatch(nameController.text.trim()) ||
+            nameController.text.isEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Row(
+                children: [
+                  Icon(Icons.download_done_rounded, color: white),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      "Tên không hợp lệ !",
+                      style: TextStyle(fontFamily: "LD"),
+                    ),
+                  ),
+                ],
+              ),
+              backgroundColor: textColor1,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(30),
+              duration: const Duration(seconds: 1),
+              elevation: 8,
+            ),
+          );
+          return;
+        }
         int id = int.parse(userId);
         final request = EditNameRequest(
           id: id,

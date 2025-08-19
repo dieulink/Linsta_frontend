@@ -7,14 +7,14 @@ import 'package:linsta_app/services/admin_service.dart';
 import 'package:linsta_app/services/order_service.dart';
 import 'package:linsta_app/ui_values.dart';
 
-class ShippingOrder extends StatefulWidget {
-  const ShippingOrder({super.key});
+class AdminShippingOrder extends StatefulWidget {
+  const AdminShippingOrder({super.key});
 
   @override
-  State<ShippingOrder> createState() => _ShippingOrderState();
+  State<AdminShippingOrder> createState() => _AdminShippingOrderState();
 }
 
-class _ShippingOrderState extends State<ShippingOrder> {
+class _AdminShippingOrderState extends State<AdminShippingOrder> {
   late Future<List<OrderResponse>> futureOrders;
 
   @override
@@ -93,14 +93,28 @@ class _ShippingOrderState extends State<ShippingOrder> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Người nhận: ${order.receiveName}",
-                          style: TextStyle(
-                            color: textColor3,
-                            fontFamily: "LD",
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          children: [
+                            Text(
+                              "Người nhận: ${order.receiveName}",
+                              style: TextStyle(
+                                color: textColor3,
+                                fontFamily: "LD",
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              "ID: ${order.id}",
+                              style: TextStyle(
+                                color: textColor1,
+                                fontFamily: "LD",
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                         Text(
                           "Nơi nhận: ${order.receiveAddress}",
@@ -134,6 +148,16 @@ class _ShippingOrderState extends State<ShippingOrder> {
                               ),
                             ),
                           ],
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Ngày đặt hàng: ${DateFormat('dd/MM/yyyy').format(order.createdAt)}",
+                          style: TextStyle(
+                            color: textColor3,
+                            fontFamily: "LD",
+                            fontSize: 13,
+                            //fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),

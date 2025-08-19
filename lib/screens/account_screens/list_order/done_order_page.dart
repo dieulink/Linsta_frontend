@@ -110,7 +110,7 @@ class _DoneOrderPageState extends State<DoneOrderPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -133,6 +133,26 @@ class _DoneOrderPageState extends State<DoneOrderPage> {
                               ),
                             ),
                           ],
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Ngày đặt hàng: ${DateFormat('dd/MM/yyyy').format(order.createdAt)}",
+                          style: TextStyle(
+                            color: textColor3,
+                            fontFamily: "LD",
+                            fontSize: 13,
+                            //fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Ngày nhận: ${DateFormat('dd/MM/yyyy').format(order.doneAt)}",
+                          style: TextStyle(
+                            color: textColor3,
+                            fontFamily: "LD",
+                            fontSize: 13,
+                            //fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
