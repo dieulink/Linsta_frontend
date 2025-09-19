@@ -1,4 +1,4 @@
-**App bán và quản lý văn phòng phẩm Linsta**
+# App bán và quản lý văn phòng phẩm Linsta
 
 App bán và quản lý văn phòng phẩm được xây dựng để bán sản phẩm của cửa hàng văn phòng phẩm Linsta, đồng thời nhân viên cửa hàng có thể theo dõi, quản lý cửa hàng thông qua ứng dụng.
 <br>
