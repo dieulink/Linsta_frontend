@@ -1,6 +1,7 @@
 **App bán và quản lý văn phòng phẩm Linsta**
 
 App bán và quản lý văn phòng phẩm được xây dựng để bán sản phẩm của cửa hàng văn phòng phẩm Linsta, đồng thời nhân viên cửa hàng có thể theo dõi, quản lý cửa hàng thông qua ứng dụng.
+<br>
 **Công nghệ sử dụng:**
 <br>
 Database: MySQL, Redis Cloud
@@ -8,9 +9,11 @@ Database: MySQL, Redis Cloud
 Backend: SpringBoot
 <br>
 Frontend: Flutter
+<br>
 
 DEMO một vài chức năng chính :
 **1. Đăng nhập, đăng kí**
+<div align="center">
 <img width="359" height="638" alt="image" src="https://github.com/user-attachments/assets/880e0709-f974-4343-858b-88734cddefcb" />
 <br>
 <img width="362" height="645" alt="image" src="https://github.com/user-attachments/assets/5d117fa4-ce33-493c-8833-75c972d2aa43" />
@@ -60,7 +63,7 @@ DEMO một vài chức năng chính :
 <br>
 <img width="380" height="676" alt="image" src="https://github.com/user-attachments/assets/8dd29098-da71-4f32-bc8f-7126dbcfa4ab" />
 
-
+</div>
 **Kết quả đạt được**
 Đối với nhân viên quản trị :
 
