@@ -1,51 +1,53 @@
-<b>App bán và quản lý văn phòng phẩm Linsta</b>
+**App bán và quản lý văn phòng phẩm Linsta**
 
 App bán và quản lý văn phòng phẩm được xây dựng để bán sản phẩm của cửa hàng văn phòng phẩm Linsta, đồng thời nhân viên cửa hàng có thể theo dõi, quản lý cửa hàng thông qua ứng dụng.
-
-Công nghệ sử dụng:
+**Công nghệ sử dụng:**
+<br>
 Database: MySQL, Redis Cloud
+<br>
 Backend: SpringBoot
+<br>
 Frontend: Flutter
 
 DEMO một vài chức năng chính :
-1. Đăng nhập, đăng kí
+**1. Đăng nhập, đăng kí**
 <img width="359" height="638" alt="image" src="https://github.com/user-attachments/assets/880e0709-f974-4343-858b-88734cddefcb" />
 <br>
 <img width="362" height="645" alt="image" src="https://github.com/user-attachments/assets/5d117fa4-ce33-493c-8833-75c972d2aa43" />
 
-2. Trang chủ
+**2. Trang chủ**
 <img width="382" height="680" alt="image" src="https://github.com/user-attachments/assets/87e39686-efd3-4aa3-b1f7-9aaaffecf044" />
 
-3. Chi tiết sản phẩm
+**3. Chi tiết sản phẩm**
 <img width="357" height="636" alt="image" src="https://github.com/user-attachments/assets/7bbc81b9-7508-4851-baa8-a591ff879a34" />
 <br>
 <img width="354" height="630" alt="image" src="https://github.com/user-attachments/assets/5b83892f-64cb-480d-b6f2-1e98620732d8" />
 
-4. Đánh giá sản phẩm
+**4. Đánh giá sản phẩm**
 <img width="349" height="621" alt="image" src="https://github.com/user-attachments/assets/a0abdf5f-4761-44c6-9816-34737e9d55f3" />
 <br>
 <img width="373" height="664" alt="image" src="https://github.com/user-attachments/assets/ab485a4b-8297-4a82-b1b5-4a5d137805a6" />
 
-5. Tìm kiếm
+**5. Tìm kiếm**
 <img width="378" height="672" alt="image" src="https://github.com/user-attachments/assets/77fb9943-1d9a-42ec-9695-d44de303dbdd" />
 <br>
 <img width="366" height="651" alt="image" src="https://github.com/user-attachments/assets/e9aba613-bc08-4238-83e8-5bc87f6e0210" />
 
-6. Quản lý tài khoản
+**6. Quản lý tài khoản**
 <img width="380" height="676" alt="image" src="https://github.com/user-attachments/assets/128623d3-254e-46cf-8f6f-13688fd8a174" />
 
-7. Trạng thái đơn hàng
+**7. Trạng thái đơn hàng**
 <img width="380" height="676" alt="image" src="https://github.com/user-attachments/assets/f9fd6aa3-2c22-4ae5-a9a6-f3712ae5ac75" />
 <br>
 <img width="383" height="681" alt="image" src="https://github.com/user-attachments/assets/7b14478f-456f-4635-bc55-b71d6edfeba0" />
 
-8. Giỏ hàng
+**8. Giỏ hàng**
 <img width="382" height="679" alt="image" src="https://github.com/user-attachments/assets/7b5dc26c-b2c0-4442-a36c-4789ddfb70c9" />
 
-9. Đặt hàng
+**9. Đặt hàng**
 <img width="377" height="670" alt="image" src="https://github.com/user-attachments/assets/351a4ea8-888b-4ba3-8350-8e079ba66b13" />
 
-10. Admin
+**10. Admin**
 <img width="390" height="694" alt="image" src="https://github.com/user-attachments/assets/8e125bba-1496-4804-8f89-6bb2d0db2bab" />
 <br>
 <img width="376" height="668" alt="image" src="https://github.com/user-attachments/assets/998ff6ff-ceb0-4b2a-920d-c72a80fb5467" />
@@ -59,20 +61,33 @@ DEMO một vài chức năng chính :
 <img width="380" height="676" alt="image" src="https://github.com/user-attachments/assets/8dd29098-da71-4f32-bc8f-7126dbcfa4ab" />
 
 
-Kết quả đạt được
+**Kết quả đạt được**
 Đối với nhân viên quản trị :
+
 -	Đăng kí, đăng nhập
+<br>
 -	Quản lý tài khoản khách hàng
+<br>
 -	Quản lý sản phẩm
+<br>
 -	Quản lý đơn hàng, theo dõi đơn hàng, cập nhật trạng thái đơn hàng
+<br>
 -	Xem báo cáo thống kê
+<br>
 Đối với khách hàng :
+<br>
 -	Đăng kí, đăng nhập
+<br>
 -	Tìm kiếm sản phẩm
+<br>
 -	Xem chi tiết sản phẩm
+<br>
 -	Xem sản phẩm theo danh mục, thương hiệu
+<br>
 -	Thêm sản phẩm vào giỏ hàng, cập nhật giỏ hàng
+<br>
 -	Đặt hàng, theo dõi đơn hàng
+<br>
 -	Xem lịch sử mua hàng
 
 
