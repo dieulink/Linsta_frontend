@@ -1,16 +1,12 @@
-# linsta_app
+App bán và quản lý văn phòng phẩm Linsta
 
-A new Flutter project.
+App bán và quản lý văn phòng phẩm được xây dựng để bán sản phẩm của cửa hàng văn phòng phẩm Linsta, đồng thời nhân viên cửa hàng có thể theo dõi, quản lý cửa hàng thông qua ứng dụng.
 
-## Getting Started
+Công nghệ sử dụng:
+Database: MySQL, Redis Cloud
+Backend: SpringBoot
+Frontend: Flutter
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+DEMO một vài chức năng chính :
+1. Đăng nhập, đăng kí
+<img width="359" height="638" alt="image" src="https://github.com/user-attachments/assets/880e0709-f974-4343-858b-88734cddefcb" />
