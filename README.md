@@ -91,11 +91,12 @@ DEMO một vài chức năng chính :
 <img width="365" height="650" alt="image" src="https://github.com/user-attachments/assets/aebba762-f4b0-4f4e-95c9-6dbfd68ee3e4" />
 <br>
 <img width="380" height="676" alt="image" src="https://github.com/user-attachments/assets/8dd29098-da71-4f32-bc8f-7126dbcfa4ab" />
-
 </div>
-**Kết quả đạt được**
-Đối với nhân viên quản trị :
 
+**Kết quả đạt được**
+<br>
+**Đối với nhân viên quản trị :**
+<br>
 -	Đăng kí, đăng nhập
 <br>
 -	Quản lý tài khoản khách hàng
@@ -106,7 +107,7 @@ DEMO một vài chức năng chính :
 <br>
 -	Xem báo cáo thống kê
 <br>
-Đối với khách hàng :
+**Đối với khách hàng :**
 <br>
 -	Đăng kí, đăng nhập
 <br>
