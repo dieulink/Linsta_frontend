@@ -95,9 +95,11 @@ DEMO một vài chức năng chính :
 
 **Kết quả đạt được**
 <br>
+
+
 **Đối với nhân viên quản trị :**
 <br>
--	Đăng kí, đăng nhập
+- Đăng kí, đăng nhập
 <br>
 -	Quản lý tài khoản khách hàng
 <br>
@@ -107,6 +109,8 @@ DEMO một vài chức năng chính :
 <br>
 -	Xem báo cáo thống kê
 <br>
+
+
 **Đối với khách hàng :**
 <br>
 -	Đăng kí, đăng nhập
