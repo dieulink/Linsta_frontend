@@ -19,6 +19,8 @@ DEMO một vài chức năng chính :
 **1. Đăng nhập, đăng kí**
 <br>
 <div align="center">
+<img width="348" height="619" alt="image" src="https://github.com/user-attachments/assets/b30b9210-8bed-4489-888b-1c5f6b051cc0" />
+<br>
 <img width="359" height="638" alt="image" src="https://github.com/user-attachments/assets/880e0709-f974-4343-858b-88734cddefcb" />
 <br>
 <img width="362" height="645" alt="image" src="https://github.com/user-attachments/assets/5d117fa4-ce33-493c-8833-75c972d2aa43" />
