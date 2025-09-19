@@ -98,7 +98,6 @@ DEMO một vài chức năng chính :
 
 
 **Đối với nhân viên quản trị :**
-<br>
 - Đăng kí, đăng nhập
 <br>
 -	Quản lý tài khoản khách hàng
@@ -112,7 +111,6 @@ DEMO một vài chức năng chính :
 
 
 **Đối với khách hàng :**
-<br>
 -	Đăng kí, đăng nhập
 <br>
 -	Tìm kiếm sản phẩm
