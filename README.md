@@ -93,39 +93,7 @@ DEMO một vài chức năng chính :
 <img width="380" height="676" alt="image" src="https://github.com/user-attachments/assets/8dd29098-da71-4f32-bc8f-7126dbcfa4ab" />
 </div>
 
-**Kết quả đạt được**
-<br>
 
-
-**Đối với nhân viên quản trị :
-<br>
-- Đăng kí, đăng nhập
-<br>
--	Quản lý tài khoản khách hàng
-<br>
--	Quản lý sản phẩm
-<br>
--	Quản lý đơn hàng, theo dõi đơn hàng, cập nhật trạng thái đơn hàng
-<br>
--	Xem báo cáo thống kê
-<br>
-
-
-**Đối với khách hàng :
-<br>
--	Đăng kí, đăng nhập
-<br>
--	Tìm kiếm sản phẩm
-<br>
--	Xem chi tiết sản phẩm
-<br>
--	Xem sản phẩm theo danh mục, thương hiệu
-<br>
--	Thêm sản phẩm vào giỏ hàng, cập nhật giỏ hàng
-<br>
--	Đặt hàng, theo dõi đơn hàng
-<br>
--	Xem lịch sử mua hàng
 
 
 
